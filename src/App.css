@@ -1,7 +1,44 @@
-ul li {
-  font-size: 30px;
+.main {
+  width: 100vw;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px;
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: 2fr 10fr;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas: 
+  'header header'
+  'nav contant';
 }
 
-h1 {
-  color: rgb(116, 32, 32);
+.header {
+  grid-area: header;
+  background-color: springgreen;
+  padding-left: 0 15px;
+}
+
+.header__logo {
+  height: 100%;
+  padding: 5px 0;
+  background-color: inherit;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: springgreen;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 30px;
+  padding-left: 15px;
+}
+
+.navigation {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contant-container {
+  grid-area: contant;
+  background-color: springgreen;
 }
