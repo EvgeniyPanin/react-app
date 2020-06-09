@@ -1,0 +1,27 @@
+.nav {
+    grid-area: nav;
+    background-color: #6183aa;
+    color: #fff;
+    font-size: 30px;
+    border-radius: 0.5rem;
+  }
+  
+  .links {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0 40px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    width: 100%;
+    padding-left: 15px;
+    font-size: 0.8em;
+  }
+  
+  .link:hover {
+    opacity: .7;
+    background-color: #a7c6f5;
+  }

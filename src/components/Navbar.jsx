@@ -1,31 +1,33 @@
 import React from "react";
+import style from "./Navbar.module.css";
+console.log(style);
 
 const Navbar = () => {
     return (
-      <nav className="nav">
-        <ul className="nav__links">
-          <li className="navigation__item">
-            <a href="#" className="nav__link">
+      <nav className={style.nav}>
+        <ul className={style.links}>
+          <li>
+            <a href="#" className={style.link}>
               Profile
             </a>
           </li>
-          <li className="navigation__item">
-            <a href="#" className="nav__link">
+          <li>
+            <a href="#" className={style.link}>
               Messages
             </a>
           </li>
-          <li className="navigation__item">
-            <a href="#" className="nav__link">
+          <li>
+            <a href="#" className={style.link}>
               News
             </a>
           </li>
-          <li className="navigation__item">
-            <a href="#" className="nav__link">
+          <li>
+            <a href="#" className={style.link}>
               Music
             </a>
           </li>
         </ul>
-        <a href="#" className="nav__link">
+        <a href="#" className={style.link}>
           Settings
         </a>
       </nav>
