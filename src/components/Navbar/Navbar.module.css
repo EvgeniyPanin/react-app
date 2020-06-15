@@ -5,23 +5,31 @@
     font-size: 30px;
     border-radius: 0.5rem;
   }
-  
+
   .links {
     list-style-type: none;
     padding: 0;
     margin: 5px 0 40px;
   }
-  
+
   .link {
-    text-decoration: none;
-    color: inherit;
     display: inline-block;
     width: 100%;
-    padding-left: 15px;
-    font-size: 0.8em;
+    padding: 0 15px;
+    margin-top: 10px;
   }
-  
+
+.link a {
+  font-size: 1.1em;
+  color: white;
+  text-decoration: none;
+}
+
+.link a.active {
+  color: gold;
+}
+
   .link:hover {
     opacity: .7;
     background-color: #a7c6f5;
-  }
+}

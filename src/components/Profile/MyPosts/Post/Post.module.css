@@ -1,0 +1,26 @@
+.post {
+    display: flex;
+    padding: 1em 0;
+}
+
+.post:first-of-type {
+    display: flex;
+    padding: 0;
+}
+
+.avatar_contaner {
+    flex-shrink: 0;
+    width: 5em;
+    height: 5em;
+    position: relative;
+    margin: 0 15px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
