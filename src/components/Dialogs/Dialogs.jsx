@@ -17,24 +17,19 @@ const Message = (props) => {
 }
 
 const Dialogs = (props) => {
+  const dialogElements = props.dialogs
+    .map( dialog => < Dialog name={ dialog.name } id={ dialog.id }/>);
+
+  const messageElements = props.messages
+    .map( m =>  <Message message={m.message} />);
+
     return (
       <div className={style.container}>
         <ul className={style.dialogs_container}>
-          < Dialog name='Артем' id='1'/>
-          < Dialog name='Василий' id='2'/>
-          < Dialog name='Гоша' id='3'/>
-          < Dialog name='Ваня' id='4'/>
-          < Dialog name='Диана' id='5'/>
-          < Dialog name='Света' id='6'/>
-          < Dialog name='Петя' id='7'/>
-          
+          { dialogElements }
         </ul>
         <section>
-          <Message message='Привет' />
-          <Message message='Как день прошел?' />
-          <Message message='У меня тоже хорошо' />
-          <Message message='Чем занимаешься завтра вечером?' />
-          <Message message='Не знаю, есть предложения?' />
+          { messageElements }
         </section>
       </div>
     );

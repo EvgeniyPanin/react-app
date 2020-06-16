@@ -4,11 +4,11 @@ import Illustration from "./Illustration/Illustration";
 import MyPosts from "./MyPosts/MyPosts";
 
 
-const Profile = () => {
+const Profile = (props) => {
     return (
       <div className={style.profile}>
         <Illustration />
-        <MyPosts />
+        <MyPosts posts={ props.posts } />
       </div>
     );
 }

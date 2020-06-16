@@ -6,13 +6,14 @@ import Post from "./Post/Post";
 
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+    const postsElements = props.posts
+        .map(post => <Post contant={ post.contant }  avatar={ post.avatar }/>);
+
     return (
         <div>
             <NewPost />
-            <Post contant='Hello? How are you?' />
-            <Post contant="I use props! It's cool!" />
-            <Post contant='Today is June 10th, perfect day to lern the React, Redux' />
+            { postsElements }
         </div>
     )
 }

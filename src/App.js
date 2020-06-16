@@ -9,17 +9,17 @@ import Music from "./components/Music/Music";
 import {Route, BrowserRouter} from "react-router-dom";
 
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="main">
         <Header />
         <Navbar />
         <div>
-          <Route path='/profile' component={Profile} />
-          <Route path='/dialogs' component={Dialogs} />
-          <Route path='/news' component={News} />
-          <Route path='/music' component={Music} />
+          <Route path='/profile' render={() => <Profile posts={ props.data.posts } />} />
+          <Route path='/dialogs' render={() => <Dialogs dialogs={props.data.dialogs} messages={props.data.messages} />} />
+          <Route path='/news' render={() => <News />} />
+          <Route path='/music' render={() => <Music />} />
         </div>
       </div>
     </BrowserRouter>
