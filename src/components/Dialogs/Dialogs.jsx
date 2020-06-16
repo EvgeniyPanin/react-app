@@ -17,10 +17,10 @@ const Message = (props) => {
 }
 
 const Dialogs = (props) => {
-  const dialogElements = props.dialogs
+  const dialogElements = props.state.dialogs
     .map( dialog => < Dialog name={ dialog.name } id={ dialog.id }/>);
 
-  const messageElements = props.messages
+  const messageElements = props.state.messages
     .map( m =>  <Message message={m.message} />);
 
     return (

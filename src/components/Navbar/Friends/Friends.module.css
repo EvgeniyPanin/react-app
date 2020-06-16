@@ -1,0 +1,27 @@
+.friends {
+    width: 93%;
+    margin: 7rem auto 0;
+    border-radius: 0.3em;
+    border: 1px solid #185eaf96;
+    box-shadow: 0 -.2em .5em #185eaf96;
+}
+
+.friends:hover {
+    font-size: 1.03em;
+    transform: scale(1.03);
+    background-color: #185eaf3b;
+}
+
+.header {
+    font-size: .9em;
+    width: fit-content;
+    margin: 5px auto 0; 
+}
+
+.friends__container {
+    margin: .3em auto;
+    padding: .2em .1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+}

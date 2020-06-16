@@ -1,0 +1,18 @@
+.friend__name {
+    margin: 0 auto;
+    font-size: .6em;
+    width: fit-content;
+}
+
+.friend__avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    padding-bottom: 90%;
+    background-image: url(https://sun9-56.userapi.com/c627221/v627221045/1f868/BSgDaLPthEU.jpg);
+    background-position: top;
+    background-size: cover;
+    border-radius: 50%;
+}
