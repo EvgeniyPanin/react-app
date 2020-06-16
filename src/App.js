@@ -11,10 +11,9 @@ import {Route, BrowserRouter} from "react-router-dom";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="main">
         <Header />
-        <Navbar />
+        <Navbar state={props.state.navbar} />
         <div>
           <Route path='/profile' render={() => <Profile state={ props.state.profilePage } />} />
           <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogPage} />} />
@@ -22,7 +21,6 @@ const App = (props) => {
           <Route path='/music' render={() => <Music />} />
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 
