@@ -1,3 +1,5 @@
+import {renderApp} from '../render';
+
 const state = {
   profilePage: {
     posts: [
@@ -96,6 +98,7 @@ const createNewPost = (text) => {
 export const addPost = (text) => {
   const newPost = createNewPost(text);
   state.profilePage.posts.push(newPost);
+  renderApp(state);
 }
 
   export default state;

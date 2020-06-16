@@ -7,7 +7,8 @@ const NewPost = (props) => {
 
     const newPostElement = React.createRef();
 
-    const addPost = () => {
+    const addPost = (evt) => {
+        evt.preventDefault();
         const text = newPostElement.current.value;
         props.addPost(text);
     }
