@@ -1,4 +1,3 @@
-
 const state = {
   profilePage: {
     posts: [
@@ -87,29 +86,5 @@ const state = {
     ]
   },
 };
-
-let renderApp;
-export const subscribe = (observer) => {
-  renderApp = observer;
-}
-
-const createNewPost = (text) => {
-  const newPost = {
-    contant: text, 
-    avatar: "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",}
-  return newPost;
-}
-
-export const addPost = () => {
-  const newPost = createNewPost(state.profilePage.newPostText);
-  state.profilePage.posts.push(newPost);
-  state.profilePage.newPostText ='';
-  renderApp(state);
-}
-
-export const changeNewPostText = (text) => {
-  state.profilePage.newPostText = text;
-  renderApp(state);
-}
 
 export default state;
