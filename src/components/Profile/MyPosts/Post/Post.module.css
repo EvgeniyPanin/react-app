@@ -1,7 +1,14 @@
 .post {
     display: flex;
-    padding: 1em 0;
+    margin: 1em 15px;
+    padding: 1em 1em;
+    border: 1px solid rgb(214, 212, 212);
+    box-shadow: -2px -2px 2px rgb(214, 212, 212);
 }
+
+/* .post:last-of-type {
+    border-bottom: none;
+} */
 
 .post:first-of-type {
     display: flex;
@@ -13,7 +20,7 @@
     width: 5em;
     height: 5em;
     position: relative;
-    margin: 0 15px;
+    margin: 0 1em 0 0;
 }
 
 .avatar {

@@ -8,7 +8,7 @@ const Profile = (props) => {
     return (
       <div className={style.profile}>
         <Illustration />
-        <MyPosts posts={ props.state.posts } addPost={ props.addPost }/>
+        <MyPosts profilePage={ props.profilePage } addPost={ props.addPost } changeNewPostText={ props.changeNewPostText }/>
       </div>
     );
 }

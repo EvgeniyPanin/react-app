@@ -7,12 +7,12 @@ import Post from "./Post/Post";
 
 
 const MyPosts = (props) => {
-    const postsElements = props.posts
+    const postsElements = props.profilePage.posts
         .map(post => <Post contant={ post.contant }  avatar={ post.avatar }/>);
 
     return (
         <div>
-            <NewPost addPost={ props.addPost }/>
+            <NewPost addPost={ props.addPost } newPostText={ props.profilePage.newPostText } changeNewPostText={ props.changeNewPostText } />
             { postsElements }
         </div>
     )

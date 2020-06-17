@@ -7,19 +7,30 @@ const NewPost = (props) => {
 
     const newPostElement = React.createRef();
 
-    const addPost = (evt) => {
+    const hundlerSubmit = (evt) => {
         evt.preventDefault();
         const text = newPostElement.current.value;
         props.addPost(text);
+        newPostElement.current.value = '';
+    }
+
+    const handlerChangeText = () => {
+        const text = newPostElement.current.value;
+        props.changeNewPostText(text);
     }
 
     return (
         <div className={style.new_post}>
             <h2 className={style.header}>Мои посты</h2>
             <form className={style.form} name='new_post_form'>
-                <textarea ref={ newPostElement } className={style.input} type='text' placeholder='Что у вас нового?'></textarea>
-                {/* <Button contant='Опубликовать'/> */}
-                <button onClick={ addPost }>Опубликовать</button>
+                <textarea 
+                        onChange={ handlerChangeText }
+                        ref={ newPostElement } 
+                        className={style.input} 
+                        value={ props.newPostText } 
+                        type='text' 
+                        placeholder='Что у вас нового?'></textarea>
+                <Button hundlerSubmit={ hundlerSubmit } contant='Опубликовать'/>
             </form>
         </div>
     )
