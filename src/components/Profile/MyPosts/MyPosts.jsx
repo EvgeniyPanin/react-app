@@ -12,7 +12,7 @@ const MyPosts = (props) => {
 
     return (
         <div>
-            <NewPost addPost={ props.addPost } newPostText={ props.profilePage.newPostText } changeNewPostText={ props.changeNewPostText } />
+            <NewPost dispatch={ props.dispatch } newPostText={ props.profilePage.newPostText }/>
             { postsElements }
         </div>
     )

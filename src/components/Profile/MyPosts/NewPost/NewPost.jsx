@@ -10,13 +10,13 @@ const NewPost = (props) => {
     const hundlerSubmit = (evt) => {
         evt.preventDefault();
         const text = newPostElement.current.value;
-        props.addPost(text);
+        props.dispatch({type: 'ADD-POST'});
         newPostElement.current.value = '';
     }
 
     const handlerChangeText = () => {
         const text = newPostElement.current.value;
-        props.changeNewPostText(text);
+        props.dispatch({ type: 'CHANGE-NEW-POST-TEXT', newText: text });
     }
 
     return (

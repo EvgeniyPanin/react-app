@@ -1,13 +1,13 @@
 class Store {
     constructor(state) {
       this._state = state;
-      this._renderApp = null;
+      this._subscriber = null;
     }
 
     getState = () => this._state;
   
     subscribe = (observer) => {
-      this._renderApp = observer;
+      this._subscriber = observer;
     }
   
     _createNewPost = (text) => {
@@ -17,16 +17,27 @@ class Store {
       return newPost;
     }
   
-    addPost = () => {
+    _addPost = () => {
       const newPost = this._createNewPost(this._state.profilePage.newPostText);
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText ='';
-      this._renderApp(this._state);
+      this._subscriber(this._state);
     }
   
-    changeNewPostText = (text) => {
+    _changeNewPostText = (text) => {
       this._state.profilePage.newPostText = text;
-      this._renderApp(this._state);
+      this._subscriber(this._state);
+    }
+
+    dispatch = (action) => {
+      switch (action.type) {
+        case 'ADD-POST':
+          this._addPost();
+          break;
+        case 'CHANGE-NEW-POST-TEXT':
+          this._changeNewPostText(action.newText);
+          break;
+      }
     }
   }
 
