@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
+import { handlerChangeMessageTextActionCreater, addMessageActionCreater } from '../../redux/Store';
 
 const Dialog = (props) => {
   return (
@@ -23,13 +24,33 @@ const Dialogs = (props) => {
   const messageElements = props.state.messages
     .map( m =>  <Message message={m.message} />);
 
+  const newMessageElement = React.createRef();
+
+  function handlerChangeText() {
+    const text = newMessageElement.current.value;
+    props.dispatch(handlerChangeMessageTextActionCreater(text));
+  }
+
+  const handlerSubmit = (evt) => {
+    evt.preventDefault();
+    props.dispatch(addMessageActionCreater());
+  }
+
     return (
       <div className={style.container}>
-        <ul className={style.dialogs_container}>
-          { dialogElements }
-        </ul>
-        <section>
-          { messageElements }
+        <ul className={style.dialogs_container}>{dialogElements}</ul>
+        <section>{messageElements}</section>
+        <section className={style.new_message}>
+          <form className={style.form}>
+            <textarea
+              onChange={ handlerChangeText }
+              ref={ newMessageElement }
+              value={ props.state.newMessageText }
+              name="new-message"
+              id="new-message"
+            ></textarea>
+            <button onClick={ handlerSubmit }>Отправить</button>
+          </form>
         </section>
       </div>
     );

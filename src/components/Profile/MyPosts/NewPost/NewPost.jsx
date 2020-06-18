@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./NewPost.module.css";
 import Button from "./Button/Button";
-import {handlerChangeTextActionCreater, addPostActionCreater} from '../../../../redux/Store';
+import {handlerChangePostTextActionCreater, addPostActionCreater} from '../../../../redux/Store';
 
 
 const NewPost = (props) => {
@@ -17,7 +17,7 @@ const NewPost = (props) => {
 
     const handlerChangeText = () => {
         const text = newPostElement.current.value;
-        props.dispatch(handlerChangeTextActionCreater(text));
+        props.dispatch(handlerChangePostTextActionCreater(text));
     }
 
     return (
