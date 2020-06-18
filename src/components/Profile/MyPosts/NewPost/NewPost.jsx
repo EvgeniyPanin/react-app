@@ -1,23 +1,19 @@
 import React from "react";
 import style from "./NewPost.module.css";
 import Button from "./Button/Button";
-import {handlerChangeTextActionCreater, addPostActionCreater} from '../../../../redux/Store';
+import {handlerChangePostTextActionCreater, addPostActionCreater} from '../../../../redux/Store';
 
 
 const NewPost = (props) => {
 
-    const newPostElement = React.createRef();
-
     const hundlerSubmit = (evt) => {
         evt.preventDefault();
-        const text = newPostElement.current.value;
         props.dispatch(addPostActionCreater());
-        newPostElement.current.value = '';
     }
 
-    const handlerChangeText = () => {
-        const text = newPostElement.current.value;
-        props.dispatch(handlerChangeTextActionCreater(text));
+    const handlerChangeText = (evt) => {
+        const text = evt.target.value;
+        props.dispatch(handlerChangePostTextActionCreater(text));
     }
 
     return (
@@ -26,7 +22,6 @@ const NewPost = (props) => {
             <form className={style.form} name='new_post_form'>
                 <textarea 
                         onChange={ handlerChangeText }
-                        ref={ newPostElement } 
                         className={style.input} 
                         value={ props.newPostText } 
                         type='text' 

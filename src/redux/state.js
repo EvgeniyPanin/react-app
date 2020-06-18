@@ -50,6 +50,7 @@ const state = {
         id: "7",
       },
     ],
+    newMessageText: 'Привет, как у тебя дела?',
     messages: [
       {
         message: "Привет",
