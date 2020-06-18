@@ -1,3 +1,7 @@
+const ADD_POST = 'ADD-POST';
+const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
+
+
 class Store {
     constructor(state) {
       this._state = state;
@@ -41,4 +45,15 @@ class Store {
     }
   }
 
-  export default Store;
+  export function handlerChangeTextActionCreater(text) {
+    return {
+        type: CHANGE_NEW_POST_TEXT,
+        newText: text
+    }
+}
+
+export function addPostActionCreater() {
+  return {type: ADD_POST};
+}
+
+export default Store;

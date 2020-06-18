@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./NewPost.module.css";
 import Button from "./Button/Button";
+import {handlerChangeTextActionCreater, addPostActionCreater} from '../../../../redux/Store';
 
 
 const NewPost = (props) => {
@@ -10,13 +11,13 @@ const NewPost = (props) => {
     const hundlerSubmit = (evt) => {
         evt.preventDefault();
         const text = newPostElement.current.value;
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(addPostActionCreater());
         newPostElement.current.value = '';
     }
 
     const handlerChangeText = () => {
         const text = newPostElement.current.value;
-        props.dispatch({ type: 'CHANGE-NEW-POST-TEXT', newText: text });
+        props.dispatch(handlerChangeTextActionCreater(text));
     }
 
     return (
