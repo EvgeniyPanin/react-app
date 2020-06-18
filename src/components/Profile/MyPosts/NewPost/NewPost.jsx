@@ -8,7 +8,7 @@ const NewPost = (props) => {
 
     const hundlerSubmit = (evt) => {
         evt.preventDefault();
-        props.dispatch(addPostActionCreater());
+        props.dispatch(addPostActionCreater()); //
     }
 
     const handlerChangeText = (evt) => {
