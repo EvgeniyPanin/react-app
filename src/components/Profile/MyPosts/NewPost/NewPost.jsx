@@ -1,14 +1,14 @@
 import React from "react";
 import style from "./NewPost.module.css";
 import Button from "./Button/Button";
-import {handlerChangePostTextActionCreater, addPostActionCreater} from '../../../../redux/Store';
+import {handlerChangePostTextActionCreater, addPostActionCreater} from '../../../../redux/profile-reducer';
 
 
 const NewPost = (props) => {
 
     const hundlerSubmit = (evt) => {
         evt.preventDefault();
-        props.dispatch(addPostActionCreater()); //
+        props.dispatch(addPostActionCreater());
     }
 
     const handlerChangeText = (evt) => {
