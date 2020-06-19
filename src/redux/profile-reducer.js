@@ -8,7 +8,28 @@ const createNewPost = (text) => {
     return newPost;
   }
 
-const profileReducer = (state, action) => {
+const initialState = {
+    posts: [
+      {
+        contant: "Hello? How are you?",
+        avatar:
+          "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+      },
+      {
+        contant: "I use props! It's cool!",
+        avatar:
+          "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+      },
+      {
+        contant: "Today is June 10th, perfect day to lern the React, Redux",
+        avatar:
+          "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+      },
+    ],
+    newPostText: 'Everything fine!',
+  };
+
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             const newPost = createNewPost(state.newPostText);

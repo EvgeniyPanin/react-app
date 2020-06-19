@@ -3,11 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import state from './redux/state';
+// import state from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
-import Store from './redux/Store';
-
-const store = new Store(state);
+import store from './redux/redux-store';
 
 const renderApp = (state) => {
   ReactDOM.render(

@@ -10,8 +10,67 @@ const createNewMessage = (messages, text) => {
     return newMessage;
 };
 
+const initialState = {
+    dialogs: [
+      {
+        name: "Артем",
+        id: "1",
+      },
+      {
+        name: "Василий",
+        id: "2",
+      },
+      {
+        name: "Гоша",
+        id: "3",
+      },
+      {
+        name: "Ваня",
+        id: "4",
+      },
+      {
+        name: "Диана",
+        id: "5",
+      },
+      {
+        name: "Света",
+        id: "6",
+      },
+      {
+        name: "Петя",
+        id: "7",
+      },
+    ],
+    newMessageText: 'Привет, как у тебя дела?',
+    messages: [
+      {
+        message: "Привет",
+        id: "1",
+      },
+      {
+        message: "Как день прошел?",
+        id: "2",
+      },
+      {
+        message: "Хорошо",
+        id: "3",
+      },
+      {
+        message: "У меня тоже хорошо",
+        id: "4",
+      },
+      {
+        message: "Чем занимаешься завтра вечером?",
+        id: "5",
+      },
+      {
+        message: "Не знаю, есть предложения?",
+        id: "6",
+      },
+    ],
+  };
 
-const dialogReducer = (state, action) => {
+const dialogReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             const newMessage = createNewMessage(state.messages, state.newMessageText);
