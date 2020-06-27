@@ -11,7 +11,7 @@ const renderApp = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={store.getState()} dispatch={store.dispatch}/>
+        <App state={store.getState()} dispatch={store.dispatch} store={ store }/>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")

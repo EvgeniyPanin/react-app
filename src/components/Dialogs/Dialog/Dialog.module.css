@@ -1,0 +1,18 @@
+.dialog {
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dialog a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: inherit;
+    width: 100%;
+}
+
+.dialog:hover {
+    background-color: #cdcdce;
+}

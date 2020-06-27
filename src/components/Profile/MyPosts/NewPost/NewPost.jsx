@@ -1,19 +1,18 @@
 import React from "react";
 import style from "./NewPost.module.css";
 import Button from "./Button/Button";
-import {handlerChangePostTextActionCreater, addPostActionCreater} from '../../../../redux/profile-reducer';
 
 
 const NewPost = (props) => {
 
     const hundlerSubmit = (evt) => {
         evt.preventDefault();
-        props.dispatch(addPostActionCreater());
+        props.addPost();
     }
 
     const handlerChangeText = (evt) => {
         const text = evt.target.value;
-        props.dispatch(handlerChangePostTextActionCreater(text));
+        props.changePostText(text);
     }
 
     return (
@@ -26,7 +25,8 @@ const NewPost = (props) => {
                         value={ props.newPostText } 
                         type='text' 
                         placeholder='Что у вас нового?'></textarea>
-                <Button hundlerSubmit={ hundlerSubmit } contant='Опубликовать'/>
+                <Button hundlerSubmit={ hundlerSubmit } 
+                        contant='Опубликовать'/>
             </form>
         </div>
     )
