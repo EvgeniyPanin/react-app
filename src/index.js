@@ -1,22 +1,24 @@
-import * as serviceWorker from './serviceWorker';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
-// import state from './redux/state';
-import { BrowserRouter } from 'react-router-dom';
-import store from './redux/redux-store';
+import * as serviceWorker from "./serviceWorker";
+import React from "react";
+import ReactDOM, { render } from "react-dom";
+import App from "./App";
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import store from "./redux/redux-store";
+import {Provider} from "react-redux";
 
 const renderApp = (state) => {
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App state={store.getState()} dispatch={store.dispatch} store={ store }/>
+        <Provider store={ store }>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>,
     document.getElementById("root")
   );
-}
+};
 
 store.subscribe(renderApp);
 renderApp(store.getState());

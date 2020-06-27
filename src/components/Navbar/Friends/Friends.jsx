@@ -4,7 +4,7 @@ import Friend from "./Friend/Friend";
 
 
 const Friends = (props) => {
-    const friendsElements = props.state.slice(0, 6)
+    const friendsElements = props.friends.slice(0, 6)
         .map(friend => <Friend name={friend.name} src={friend.avatar}/>);
 
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Friends from './Friends/Friends'
+import FriendsContainer from './Friends/FriendsContainer'
 import style from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Navbar = (props) => {
             <NavLink to="/settings" activeClassName={style.active}>Настройки</NavLink>
           </li>
         </ul>
-        <Friends state={ props.state.friends }/>
+        <FriendsContainer />
       </nav>
     );
 }
