@@ -26,11 +26,15 @@
   text-decoration: none;
 }
 
+.link:last-of-type {
+  margin-top: 2.5rem;
+}
+
 .link a.active {
   color: gold;
 }
 
-  .link:hover {
-    opacity: .7;
-    background-color: #a7c6f5;
+.link:hover {
+  opacity: .7;
+  background-color: #a7c6f5;
 }
