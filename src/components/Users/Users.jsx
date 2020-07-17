@@ -3,7 +3,7 @@ import style from "./Users.module.css";
 
 const Users = (props) => {
   const userElements = props.createUsersArr();
-      const pagesList = props.createPagesList();
+  const pagesList = props.createPagesList();
       return (
         <div>
           <nav

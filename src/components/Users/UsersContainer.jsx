@@ -1,38 +1,48 @@
 import React from 'react';
 import Users from './Users';
 import {connect} from 'react-redux';
-import {toggleFallowedAC, setUsersAC, updateCurrentPageAC} from '../../redux/users-reducer';
+import {toggleFallowedAC, setUsersAC, updateCurrentPageAC, toggleFetchedAC} from '../../redux/users-reducer';
 import User from './User/User';
 import * as axios from "axios";
 import style from "./Users.module.css";
+import Preloader from "../UI/Preloader/Preloader";
+
 
 class UsersContainer extends React.Component {
     render = () => {
-      return <Users createUsersArr={this.createUsersArr}
+      return <>
+      {this.props.isFetching ? <Preloader /> : null }
+      <Users createUsersArr={this.createUsersArr}
       createPagesList={this.createPagesList}
       togglePages={this.togglePages}
+      isFetching={this.props.isFetching}
         />
+    </>
     };
   
     componentDidMount() {
+        this.props.toggleIsFetched(true);
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
         )
         .then((response) => {
-          this.props.setUsers(response.data.items);
+            this.props.toggleIsFetched(false);
+            this.props.setUsers(response.data.items);
         });
     }
   
     togglePages = (evt) => {
       const newCurrentPage = +evt.target.textContent;
       this.props.updateCurrentPage(newCurrentPage);
+      this.props.toggleIsFetched(true);
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`
         )
         .then((response) => {
-          this.props.setUsers(response.data.items);
+            this.props.toggleIsFetched(false);
+            this.props.setUsers(response.data.items);
         });
     };
   
@@ -73,7 +83,8 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         totalUsersCount: state.usersPage.totalUsersCount,
         pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
     }
 }
 
@@ -87,6 +98,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updateCurrentPage: (newCurrentPage) => {
             dispatch(updateCurrentPageAC(newCurrentPage));
+        },
+        toggleIsFetched: (state) => {
+            dispatch(toggleFetchedAC(state));
         }
     }
 }
