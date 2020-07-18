@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./User.module.css";
 import defaultAvatar from '../../../assets/images/user.png'
+import { NavLink } from "react-router-dom";
 
 
 const User = (props) => {
@@ -8,7 +9,10 @@ const User = (props) => {
   return (
     <div className={style.container}>
       <span className={style.avatar__container}>
+        <NavLink to={`/profile/${props.userID}`}>
           <img className={ style.avatar } src={ avatar } alt="#"/>
+        </NavLink>
+          
       </span>
       <div className={style.description__container}>
   <h2 className={style.name}>{ props.name }</h2>

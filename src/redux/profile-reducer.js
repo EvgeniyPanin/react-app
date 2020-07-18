@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT';
+const SET_PROFILE = 'SET_PROFILE';
 
 const createNewPost = (text) => {
     const newPost = {
@@ -27,6 +28,7 @@ const initialState = {
       },
     ],
     newPostText: 'Everything fine!',
+    profile: null,
   };
 
 const profileReducer = (state = initialState, action) => {
@@ -43,6 +45,11 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             newPostText: action.newText,
           }
+        case SET_PROFILE:
+          return {
+            ...state,
+            profile: action.profile,
+          }
         default:
             return state;
     }
@@ -57,6 +64,10 @@ export function changePostText(text) {
 
 export function addPost() {
     return {type: ADD_POST};
+}
+
+export function setProfile(profile) {
+    return {type: SET_PROFILE, profile};
 }
 
 

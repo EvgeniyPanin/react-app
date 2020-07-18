@@ -1,0 +1,24 @@
+.container {
+    width: 100%;
+    margin: 1em 0;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.avatar_container {
+display: inline-block;
+   width: 15%;
+   padding-bottom: 15%;
+   margin-left: 1em;
+   position: relative;
+}
+
+.avatar {
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
