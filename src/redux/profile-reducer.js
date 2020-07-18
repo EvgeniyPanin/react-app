@@ -48,14 +48,14 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export function handlerChangePostTextActionCreater(text) {
+export function changePostText(text) {
     return {
         type: CHANGE_NEW_POST_TEXT,
         newText: text
     }
 }
 
-export function addPostActionCreater() {
+export function addPost() {
     return {type: ADD_POST};
 }
 

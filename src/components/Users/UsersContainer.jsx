@@ -1,7 +1,7 @@
 import React from 'react';
 import Users from './Users';
 import {connect} from 'react-redux';
-import {toggleFallowedAC, setUsersAC, updateCurrentPageAC, toggleFetchedAC} from '../../redux/users-reducer';
+import {toggleFallow, setUsers, updateCurrentPage, toggleFetched} from '../../redux/users-reducer';
 import User from './User/User';
 import * as axios from "axios";
 import style from "./Users.module.css";
@@ -21,13 +21,13 @@ class UsersContainer extends React.Component {
     };
   
     componentDidMount() {
-        this.props.toggleIsFetched(true);
+        this.props.toggleFetched(true);
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
         )
         .then((response) => {
-            this.props.toggleIsFetched(false);
+            this.props.toggleFetched(false);
             this.props.setUsers(response.data.items);
         });
     }
@@ -35,13 +35,13 @@ class UsersContainer extends React.Component {
     togglePages = (evt) => {
       const newCurrentPage = +evt.target.textContent;
       this.props.updateCurrentPage(newCurrentPage);
-      this.props.toggleIsFetched(true);
+      this.props.toggleFetched(true);
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`
         )
         .then((response) => {
-            this.props.toggleIsFetched(false);
+            this.props.toggleFetched(false);
             this.props.setUsers(response.data.items);
         });
     };
@@ -88,21 +88,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        toggleFallow: (userID) => {
-            dispatch(toggleFallowedAC(userID));
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users));
-        },
-        updateCurrentPage: (newCurrentPage) => {
-            dispatch(updateCurrentPageAC(newCurrentPage));
-        },
-        toggleIsFetched: (state) => {
-            dispatch(toggleFetchedAC(state));
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, 
+    {toggleFallow, setUsers, updateCurrentPage, toggleFetched})(UsersContainer);

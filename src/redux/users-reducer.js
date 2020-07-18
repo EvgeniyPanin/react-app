@@ -31,29 +31,28 @@ const usersReducer = (state = initialState, action) => {
         case UPDATE_CURRENT_PAGE:
           return {...state, currentPage: action.newCurrentPage}
         case TOGGLE_IS_FETCHED:
-          console.log(state)
           return {...state, isFetching: action.state}
         default:
             return state;
     }
 }
 
-export function toggleFallowedAC(userID) {
+export function toggleFallow(userID) {
     return {
         type: TOGGLE_FALLOWED,
         userID,
     }
 }
 
-export function setUsersAC(users) {
+export function setUsers(users) {
     return {type: SET_USERS, users};
 }
 
-export function updateCurrentPageAC(newCurrentPage) {
+export function updateCurrentPage(newCurrentPage) {
   return {type: UPDATE_CURRENT_PAGE, newCurrentPage}
 }
 
-export function toggleFetchedAC(state) {
+export function toggleFetched(state) {
   return {type: TOGGLE_IS_FETCHED, state}
 }
 
