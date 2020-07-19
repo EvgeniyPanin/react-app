@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Проект находится в разработке, представлен в портфолио только предоставления возможности ознакомления с кодом
 
 ## Available Scripts
 
