@@ -50,7 +50,7 @@ class UsersContainer extends React.Component {
       return this.props.users.map((user) => {
         return (
           <User
-            avatar={user.avatar}
+            avatar={user.photos.small}
             name={user.name}
             status={user.status}
             city={"user.location.city"}
