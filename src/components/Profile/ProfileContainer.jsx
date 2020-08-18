@@ -11,7 +11,7 @@ import { withRouter } from "react-router-dom";
 class ProfileContainer extends React.Component {
     render = () => {
       if (!this.props.user) return <Preloader />
-      console.log(this.props.user.photos)
+      // console.log(this.props.user)
       return <Profile user={this.props.user}/>
     }
     

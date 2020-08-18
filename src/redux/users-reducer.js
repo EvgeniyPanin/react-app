@@ -6,7 +6,7 @@ const TOGGLE_IS_FETCHED = 'TOGGLE_IS_FETCHED';
 const initialState = {
     users: [],
     pageSize: 10,
-    totalUsersCount: 9500,
+    totalUsersCount: 5000,
     currentPage: 1,
     isFetching: false,
   };
