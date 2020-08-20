@@ -11,12 +11,12 @@ import { withRouter } from "react-router-dom";
 class ProfileContainer extends React.Component {
     render = () => {
       if (!this.props.user) return <Preloader />
-      // console.log(this.props.user)
       return <Profile user={this.props.user}/>
     }
     
     componentDidMount() {
-      const path = this.props.match.params.id;
+      let path = this.props.match.params.id;
+      if (!path) path = '9265';
       axios
         .get(
           `https://social-network.samuraijs.com/api/1.0/profile/${path}`
