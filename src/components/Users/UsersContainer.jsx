@@ -3,9 +3,9 @@ import Users from './Users';
 import {connect} from 'react-redux';
 import {toggleFallow, setUsers, updateCurrentPage, toggleFetched} from '../../redux/users-reducer';
 import User from './User/User';
-import * as axios from "axios";
 import style from "./Users.module.css";
 import Preloader from "../UI/Preloader/Preloader";
+import { usersAPI } from '../../api/UsersAPI';
 
 
 class UsersContainer extends React.Component {
@@ -22,15 +22,9 @@ class UsersContainer extends React.Component {
   
     componentDidMount() {
         this.props.toggleFetched(true);
-      axios
-        .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`, {
-            withCredentials: true
-          }
-        )
-        .then((response) => {
+      usersAPI.getUsers(this.props.currenPAge).then((data) => {
             this.props.toggleFetched(false);
-            this.props.setUsers(response.data.items);
+            this.props.setUsers(data.items);
         });
     }
   
@@ -38,15 +32,9 @@ class UsersContainer extends React.Component {
       const newCurrentPage = +evt.target.textContent;
       this.props.updateCurrentPage(newCurrentPage);
       this.props.toggleFetched(true);
-      axios
-        .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`, {
-            withCredentials: true
-          }
-        )
-        .then((response) => {
+      usersAPI.getUsers(newCurrentPage).then((data) => {
             this.props.toggleFetched(false);
-            this.props.setUsers(response.data.items);
+            this.props.setUsers(data.items);
         });
     };
   

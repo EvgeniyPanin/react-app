@@ -3,6 +3,7 @@ import style from "./User.module.css";
 import defaultAvatar from "../../../assets/images/user.png";
 import * as axios from "axios";
 import { NavLink } from "react-router-dom";
+import { followAPI } from "../../../api/FollowAPI";
 
 const User = (props) => {
   const avatar = props.avatar ? props.avatar : defaultAvatar;
@@ -23,31 +24,19 @@ const User = (props) => {
       <button
         onClick={() => {
           if (props.fallowed) {
-            axios
-            .delete(
-              `https://social-network.samuraijs.com/api/1.0/follow/${props.userID}`, {
-                withCredentials: true,
-                headers: {
-                  "API-KEY": '727c92a5-5e8f-4915-b4a2-a82f90582417'
-                }
-              }
-            )
-            .then((response) => {
-                if (response.data.resultCode == 0) props.toggleFallow(props.userID);
-            })
+            followAPI.deleteFollow(props.userID)
+              .then((data) => {
+                  if (data.resultCode == 0) {
+                    props.toggleFallow(props.userID);
+                  }
+              })
           } else {
-            axios
-            .post(
-              `https://social-network.samuraijs.com/api/1.0/follow/${props.userID}`, {}, {
-                withCredentials: true,
-                headers: {
-                  "API-KEY": '727c92a5-5e8f-4915-b4a2-a82f90582417'
-                }
-              }
-            )
-            .then((response) => {
-                if (response.data.resultCode == 0) props.toggleFallow(props.userID)
-            })
+            followAPI.postFollow(props.userID)
+              .then((data) => {
+                  if (data.resultCode == 0) {
+                    props.toggleFallow(props.userID)
+                  }
+              })
           }
         }}
         className={style.button}
