@@ -24,7 +24,9 @@ class UsersContainer extends React.Component {
         this.props.toggleFetched(true);
       axios
         .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`
+          `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}`, {
+            withCredentials: true
+          }
         )
         .then((response) => {
             this.props.toggleFetched(false);
@@ -38,7 +40,9 @@ class UsersContainer extends React.Component {
       this.props.toggleFetched(true);
       axios
         .get(
-          `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`
+          `https://social-network.samuraijs.com/api/1.0/users?page=${newCurrentPage}`, {
+            withCredentials: true
+          }
         )
         .then((response) => {
             this.props.toggleFetched(false);
@@ -55,7 +59,7 @@ class UsersContainer extends React.Component {
             status={user.status}
             city={"user.location.city"}
             country={"user.location.country"}
-            fallowed={user.fallowed}
+            fallowed={user.followed}
             userID={user.id}
             toggleFallow={this.props.toggleFallow}
           />

@@ -20,7 +20,7 @@ const usersReducer = (state = initialState, action) => {
             if (action.userID === user.id) {
               return {
                 ...user,
-                fallowed: !user.fallowed,
+                followed: !user.followed,
               };
             }
             return user;

@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./User.module.css";
 import defaultAvatar from "../../../assets/images/user.png";
+import * as axios from "axios";
 import { NavLink } from "react-router-dom";
 
 const User = (props) => {
@@ -20,7 +21,35 @@ const User = (props) => {
         >{`${props.city}, ${props.country}`}</span>
       </div>
       <button
-        onClick={() => props.toggleFallow(props.userID)}
+        onClick={() => {
+          if (props.fallowed) {
+            axios
+            .delete(
+              `https://social-network.samuraijs.com/api/1.0/follow/${props.userID}`, {
+                withCredentials: true,
+                headers: {
+                  "API-KEY": '727c92a5-5e8f-4915-b4a2-a82f90582417'
+                }
+              }
+            )
+            .then((response) => {
+                if (response.data.resultCode == 0) props.toggleFallow(props.userID);
+            })
+          } else {
+            axios
+            .post(
+              `https://social-network.samuraijs.com/api/1.0/follow/${props.userID}`, {}, {
+                withCredentials: true,
+                headers: {
+                  "API-KEY": '727c92a5-5e8f-4915-b4a2-a82f90582417'
+                }
+              }
+            )
+            .then((response) => {
+                if (response.data.resultCode == 0) props.toggleFallow(props.userID)
+            })
+          }
+        }}
         className={style.button}
       >
         {props.fallowed ? "Отписаться" : "Подписаться"}
