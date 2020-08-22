@@ -2,6 +2,7 @@ const TOGGLE_FALLOWED = 'TOGGLE_FALLOWED';
 const SET_USERS = 'SET_USERS';
 const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
 const TOGGLE_IS_FETCHED = 'TOGGLE_IS_FETCHED';
+const TOGGLE_FOLLOWING_FETCHING = 'TOGGLE_FOLLOWING_FETCHING';
 
 const initialState = {
     users: [],
@@ -9,6 +10,7 @@ const initialState = {
     totalUsersCount: 5000,
     currentPage: 1,
     isFetching: false,
+    isFollowingFetching: []
   };
 
 const usersReducer = (state = initialState, action) => {
@@ -32,6 +34,12 @@ const usersReducer = (state = initialState, action) => {
           return {...state, currentPage: action.newCurrentPage}
         case TOGGLE_IS_FETCHED:
           return {...state, isFetching: action.state}
+        case TOGGLE_FOLLOWING_FETCHING:
+          if (action.state) {
+            return {...state, isFollowingFetching: [...state.isFollowingFetching, action.userID]}
+          } else {
+            return {...state, isFollowingFetching: [...state.isFollowingFetching.filter(id => id !== action.userID)]}
+          }
         default:
             return state;
     }
@@ -54,6 +62,10 @@ export function updateCurrentPage(newCurrentPage) {
 
 export function toggleFetched(state) {
   return {type: TOGGLE_IS_FETCHED, state}
+}
+
+export function toggleFollowingFetching(state, userID) {
+  return {type: TOGGLE_FOLLOWING_FETCHING, state, userID}
 }
 
 

@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./User.module.css";
 import defaultAvatar from "../../../assets/images/user.png";
-import * as axios from "axios";
 import { NavLink } from "react-router-dom";
 import { followAPI } from "../../../api/FollowAPI";
 
@@ -22,13 +21,18 @@ const User = (props) => {
         >{`${props.city}, ${props.country}`}</span>
       </div>
       <button
-        onClick={() => {
+        disabled={ props.isFollowingFetching.some(id => id === props.userID) }
+        onClick={() => {;
+          props.toggleFollowingFetching(true, props.userID);
           if (props.fallowed) {
             followAPI.deleteFollow(props.userID)
               .then((data) => {
                   if (data.resultCode == 0) {
                     props.toggleFallow(props.userID);
                   }
+              })
+              .finally(() => {
+                props.toggleFollowingFetching(false, props.userID);
               })
           } else {
             followAPI.postFollow(props.userID)
@@ -37,9 +41,14 @@ const User = (props) => {
                     props.toggleFallow(props.userID)
                   }
               })
+              .finally(() => {
+                props.toggleFollowingFetching(false, props.userID);
+              })
           }
         }}
-        className={style.button}
+        className={props.isFollowingFetching.some(id => id === props.userID)
+          ? `${style.button} ${style.button_disabled}` 
+          : style.button }
       >
         {props.fallowed ? "Отписаться" : "Подписаться"}
       </button>
