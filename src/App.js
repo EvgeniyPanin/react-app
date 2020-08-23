@@ -8,6 +8,7 @@ import {Route} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 
 const App = (props) => {
@@ -21,6 +22,7 @@ const App = (props) => {
           <Route path='/dialogs' render={() => <DialogsContainer store={ props.store }/>} />
           <Route path='/news' render={() => <News />} />
           <Route path='/music' render={() => <Music />} />
+          <Route path='/login' render={() => <Login />} />
         </div>
       </div>
   );
