@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import {acceptProfile} from '../../redux/profile-reducer';
 import Preloader from "../UI/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
+import withAutoRedirect from "../../hok/withAutoRedirect";
 
 
 
@@ -28,4 +29,6 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { acceptProfile })(withRouter(ProfileContainer))
+const autoRedirectProfile = withAutoRedirect(withRouter(ProfileContainer))
+
+export default connect(mapStateToProps, { acceptProfile })(autoRedirectProfile)
