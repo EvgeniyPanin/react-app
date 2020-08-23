@@ -1,14 +1,7 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import {
-  toggleFallow,
-  updateCurrentPage,
-  toggleFollowingFetching,
-  getUsers,
-  follow,
-  unfollow
-} from "../../redux/users-reducer";
+import {updateCurrentPage, getUsers, follow, unfollow} from "../../redux/users-reducer";
 import User from "./User/User";
 import style from "./Users.module.css";
 import Preloader from "../UI/Preloader/Preloader";
@@ -49,9 +42,7 @@ class UsersContainer extends React.Component {
           country={"user.location.country"}
           fallowed={user.followed}
           userID={user.id}
-          toggleFallow={this.props.toggleFallow}
           isFollowingFetching={this.props.isFollowingFetching}
-          toggleFollowingFetching={this.props.toggleFollowingFetching}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
         />
@@ -80,15 +71,12 @@ const mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     pageSize: state.usersPage.pageSize,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
     isFollowingFetching: state.usersPage.isFollowingFetching,
   };
 };
 
 export default connect(mapStateToProps, {
-  toggleFallow,
   updateCurrentPage,
-  toggleFollowingFetching,
   getUsers,
   follow,
   unfollow

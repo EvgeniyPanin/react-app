@@ -22,13 +22,7 @@ const User = (props) => {
       </div>
       <button
         disabled={ props.isFollowingFetching.some(id => id === props.userID) }
-        onClick={() => {;
-          if (props.fallowed) {
-            props.unfollow(props.userID)
-          } else {
-            props.follow(props.userID)
-          }
-        }}
+        onClick={() => {props.fallowed ? props.unfollow(props.userID): props.follow(props.userID)}}
         className={props.isFollowingFetching.some(id => id === props.userID)
           ? `${style.button} ${style.button_disabled}` 
           : style.button }
