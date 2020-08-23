@@ -3,15 +3,13 @@ import Users from "./Users";
 import { connect } from "react-redux";
 import {
   toggleFallow,
-  setUsers,
   updateCurrentPage,
-  toggleFetched,
   toggleFollowingFetching,
+  getUsersThunkCreator
 } from "../../redux/users-reducer";
 import User from "./User/User";
 import style from "./Users.module.css";
 import Preloader from "../UI/Preloader/Preloader";
-import { usersAPI } from "../../api/UsersAPI";
 
 class UsersContainer extends React.Component {
   render = () => {
@@ -29,21 +27,13 @@ class UsersContainer extends React.Component {
   };
 
   componentDidMount() {
-    this.props.toggleFetched(true);
-    usersAPI.getUsers(this.props.currenPAge).then((data) => {
-      this.props.toggleFetched(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(this.props.currenPage);
   }
 
   togglePages = (evt) => {
     const newCurrentPage = +evt.target.textContent;
     this.props.updateCurrentPage(newCurrentPage);
-    this.props.toggleFetched(true);
-    usersAPI.getUsers(newCurrentPage).then((data) => {
-      this.props.toggleFetched(false);
-      this.props.setUsers(data.items);
-    });
+    this.props.getUsers(newCurrentPage);
   };
 
   createUsersArr = () => {
@@ -93,8 +83,7 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   toggleFallow,
-  setUsers,
   updateCurrentPage,
-  toggleFetched,
-  toggleFollowingFetching
+  toggleFollowingFetching,
+  getUsers: getUsersThunkCreator
 })(UsersContainer);

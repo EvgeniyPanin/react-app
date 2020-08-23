@@ -1,3 +1,6 @@
+import { usersAPI } from "../api/UsersAPI";
+
+
 const TOGGLE_FALLOWED = 'TOGGLE_FALLOWED';
 const SET_USERS = 'SET_USERS';
 const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
@@ -38,7 +41,14 @@ const usersReducer = (state = initialState, action) => {
           if (action.state) {
             return {...state, isFollowingFetching: [...state.isFollowingFetching, action.userID]}
           } else {
-            return {...state, isFollowingFetching: [...state.isFollowingFetching.filter(id => id !== action.userID)]}
+            return {
+              ...state,
+              isFollowingFetching: [
+                ...state.isFollowingFetching.filter(
+                  (id) => id !== action.userID
+                ),
+              ],
+            };
           }
         default:
             return state;
@@ -66,6 +76,16 @@ export function toggleFetched(state) {
 
 export function toggleFollowingFetching(state, userID) {
   return {type: TOGGLE_FOLLOWING_FETCHING, state, userID}
+}
+
+export const getUsersThunkCreator = (currenPage) => {
+  return (dispatch) => {
+      dispatch(toggleFetched(true));
+      usersAPI.getUsers(currenPage).then((data) => {
+      dispatch(toggleFetched(false));
+      dispatch(setUsers(data.items));
+    });
+  }
 }
 
 
