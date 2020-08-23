@@ -5,7 +5,9 @@ import {
   toggleFallow,
   updateCurrentPage,
   toggleFollowingFetching,
-  getUsersThunkCreator
+  getUsers,
+  follow,
+  unfollow
 } from "../../redux/users-reducer";
 import User from "./User/User";
 import style from "./Users.module.css";
@@ -50,6 +52,8 @@ class UsersContainer extends React.Component {
           toggleFallow={this.props.toggleFallow}
           isFollowingFetching={this.props.isFollowingFetching}
           toggleFollowingFetching={this.props.toggleFollowingFetching}
+          follow={this.props.follow}
+          unfollow={this.props.unfollow}
         />
       );
     });
@@ -85,5 +89,7 @@ export default connect(mapStateToProps, {
   toggleFallow,
   updateCurrentPage,
   toggleFollowingFetching,
-  getUsers: getUsersThunkCreator
+  getUsers,
+  follow,
+  unfollow
 })(UsersContainer);

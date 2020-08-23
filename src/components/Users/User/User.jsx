@@ -23,27 +23,10 @@ const User = (props) => {
       <button
         disabled={ props.isFollowingFetching.some(id => id === props.userID) }
         onClick={() => {;
-          props.toggleFollowingFetching(true, props.userID);
           if (props.fallowed) {
-            followAPI.deleteFollow(props.userID)
-              .then((data) => {
-                  if (data.resultCode == 0) {
-                    props.toggleFallow(props.userID);
-                  }
-              })
-              .finally(() => {
-                props.toggleFollowingFetching(false, props.userID);
-              })
+            props.unfollow(props.userID)
           } else {
-            followAPI.postFollow(props.userID)
-              .then((data) => {
-                  if (data.resultCode == 0) {
-                    props.toggleFallow(props.userID)
-                  }
-              })
-              .finally(() => {
-                props.toggleFollowingFetching(false, props.userID);
-              })
+            props.follow(props.userID)
           }
         }}
         className={props.isFollowingFetching.some(id => id === props.userID)
