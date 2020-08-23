@@ -2,7 +2,6 @@ import React from "react";
 import style from "./User.module.css";
 import defaultAvatar from "../../../assets/images/user.png";
 import { NavLink } from "react-router-dom";
-import { followAPI } from "../../../api/FollowAPI";
 
 const User = (props) => {
   const avatar = props.avatar ? props.avatar : defaultAvatar;

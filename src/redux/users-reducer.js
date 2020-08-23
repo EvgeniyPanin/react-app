@@ -1,5 +1,4 @@
-import { usersAPI } from "../api/UsersAPI";
-import { followAPI } from "../api/FollowAPI";
+import { usersAPI, followAPI } from "../api/api";
 
 const TOGGLE_FALLOWED = "TOGGLE_FALLOWED";
 const SET_USERS = "SET_USERS";
