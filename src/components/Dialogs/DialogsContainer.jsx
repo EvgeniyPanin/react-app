@@ -2,6 +2,7 @@ import { changeText, addMessage } from '../../redux/dialog-reducer';
 import Dialogs from "./Dialogs";
 import {connect} from 'react-redux';
 import withAutoRedirect from '../../hok/withAutoRedirect';
+import { compose } from 'redux';
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const DialogsContainer = connect(mapStateToProps, 
-  {addMessage, changeText})(withAutoRedirect(Dialogs));
-
-export default DialogsContainer;
+export default compose(
+    connect(mapStateToProps, {addMessage, changeText}),
+    withAutoRedirect
+  )(Dialogs)
