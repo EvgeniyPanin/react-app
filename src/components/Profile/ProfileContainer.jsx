@@ -17,8 +17,7 @@ class ProfileContainer extends React.Component {
     }
     
     componentDidMount() {
-      let path = this.props.match.params.id;
-      if (!path) path = '9265';
+      const path = this.props.match.params.id || this.props.myID;
       this.props.acceptProfile(path);
     }
 }
@@ -26,7 +25,8 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.profilePage.profile,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    myID: state.auth.id
   }
 }
 

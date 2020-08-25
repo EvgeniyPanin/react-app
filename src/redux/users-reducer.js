@@ -5,11 +5,12 @@ const SET_USERS = "SET_USERS";
 const UPDATE_CURRENT_PAGE = "UPDATE_CURRENT_PAGE";
 const TOGGLE_IS_FETCHED = "TOGGLE_IS_FETCHED";
 const TOGGLE_FOLLOWING_FETCHING = "TOGGLE_FOLLOWING_FETCHING";
+const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 
 const initialState = {
   users: [],
   pageSize: 10,
-  totalUsersCount: 5000,
+  totalUsersCount: null,
   currentPage: 1,
   isFetching: false,
   isFollowingFetching: [],
@@ -36,6 +37,8 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, currentPage: action.newCurrentPage };
     case TOGGLE_IS_FETCHED:
       return { ...state, isFetching: action.state };
+    case SET_TOTAL_COUNT:
+      return { ...state, totalUsersCount: action.totalCount };
     case TOGGLE_FOLLOWING_FETCHING:
       if (action.state) {
         return {
@@ -66,6 +69,10 @@ export function setUsers(users) {
   return { type: SET_USERS, users };
 }
 
+export function setTotalCount(totalCount) {
+  return { type: SET_TOTAL_COUNT, totalCount };
+}
+
 export function updateCurrentPage(newCurrentPage) {
   return { type: UPDATE_CURRENT_PAGE, newCurrentPage };
 }
@@ -82,6 +89,7 @@ export const getUsers = (currenPage) => {
   return (dispatch) => {
     dispatch(toggleFetched(true));
     usersAPI.getUsers(currenPage).then((data) => {
+      dispatch(setTotalCount(data.totalCount));
       dispatch(toggleFetched(false));
       dispatch(setUsers(data.items));
     });
