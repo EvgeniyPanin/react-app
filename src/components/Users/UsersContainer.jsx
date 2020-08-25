@@ -5,6 +5,7 @@ import {updateCurrentPage, getUsers, follow, unfollow} from "../../redux/users-r
 import User from "./User/User";
 import style from "./Users.module.css";
 import Preloader from "../UI/Preloader/Preloader";
+import { compose } from "redux";
 
 class UsersContainer extends React.Component {
   render = () => {
@@ -41,8 +42,6 @@ class UsersContainer extends React.Component {
           avatar={user.photos.small}
           name={user.name}
           status={user.status}
-          city={"user.location.city"}
-          country={"user.location.country"}
           fallowed={user.followed}
           userID={user.id}
           isFollowingFetching={this.props.isFollowingFetching}
@@ -79,9 +78,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {
-  updateCurrentPage,
-  getUsers,
-  follow,
-  unfollow
-})(UsersContainer);
+export default compose(
+  connect(mapStateToProps, {updateCurrentPage, getUsers, follow, unfollow})
+)(UsersContainer)

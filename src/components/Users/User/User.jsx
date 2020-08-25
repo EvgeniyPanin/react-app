@@ -15,9 +15,6 @@ const User = (props) => {
       <div className={style.description__container}>
         <h2 className={style.name}>{props.name}</h2>
         <p className={style.status}>{props.status}</p>
-        <span
-          className={style.location}
-        >{`${props.city}, ${props.country}`}</span>
       </div>
       <button
         disabled={ props.isFollowingFetching.some(id => id === props.userID) }

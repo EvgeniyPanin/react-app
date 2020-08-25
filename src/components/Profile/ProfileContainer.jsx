@@ -11,7 +11,6 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
     render = () => {
-      if (!this.props.isAuth) return <Redirect to='/login' />
       if (!this.props.user) return <Preloader />
       return <Profile user={this.props.user}/>
     }
@@ -25,7 +24,6 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
     myID: state.auth.id
   }
 }
