@@ -10,13 +10,16 @@ class UsersContainer extends React.Component {
   render = () => {
     return (
       <>
-        {this.props.isFetching ? <Preloader /> : null}
-        <Users
-          createUsersArr={this.createUsersArr}
-          createPagesList={this.createPagesList}
-          togglePages={this.togglePages}
-          isFetching={this.props.isFetching}
-        />
+        {this.props.isFetching ? (
+          <Preloader />
+        ) : (
+          <Users
+            createUsersArr={this.createUsersArr}
+            createPagesList={this.createPagesList}
+            togglePages={this.togglePages}
+            isFetching={this.props.isFetching}
+          />
+        )}
       </>
     );
   };
@@ -72,6 +75,7 @@ const mapStateToProps = (state) => {
     pageSize: state.usersPage.pageSize,
     currentPage: state.usersPage.currentPage,
     isFollowingFetching: state.usersPage.isFollowingFetching,
+    isFetching: state.usersPage.isFetching
   };
 };
 
