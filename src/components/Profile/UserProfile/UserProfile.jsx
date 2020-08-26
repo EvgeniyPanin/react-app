@@ -12,8 +12,9 @@ const UserProfile = (props) => {
       </span>
       <div className={style.description_container}>
         <h3>{props.user.fullName}</h3>
-        <p>{ props.user.aboutMe }</p>
-        <UserStatus status={props.status} setUserStatus={props.setUserStatus}/>
+        {props.user.userId === props.myID
+          ? <UserStatus status={props.status} setUserStatus={props.setUserStatus}/>
+          : <p>{ props.user.aboutMe }</p>}
       </div>
     </div>
   );

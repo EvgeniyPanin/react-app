@@ -2,18 +2,12 @@ import React from "react";
 import style from './UserStatus.module.css';
 
 class UserStatus extends React.Component {
-  constructor(props) {
-    super()
-    this.state = {
-      editMode: false,
-      status: props.status
-    };
-  }
+  state = {
+    editMode: false,
+    status: this.props.status
+  };
 
   render() {
-    if (this.state.status === null) {
-      this.setState({status: 'Нажмите здесь, чтобы добавить статус'})
-    } 
     return (
       <div>
         {this.state.editMode ? (
@@ -32,6 +26,14 @@ class UserStatus extends React.Component {
         )}
       </div>
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      });
+    }
   }
 
   handlerOnChange = (evt) => {

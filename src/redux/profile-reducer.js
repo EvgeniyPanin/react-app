@@ -94,7 +94,11 @@ export const acceptProfile = (path) => {
 export const getStatus = (userID) => {
   return (dispatch) => {
     profileAPI.getStatus(userID).then(res => {
-      dispatch(setStatus(res.data))
+      let status = res.data;
+      if (status === null || status === '') {
+        status = 'Нажмите, чтобы ввести статус'
+      }
+      dispatch(setStatus(status))
     })
   };
 };

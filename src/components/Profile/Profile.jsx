@@ -13,6 +13,7 @@ const Profile = (props) => {
           user={props.user}
           status={props.status}
           setUserStatus={props.setUserStatus}
+          myID={props.myID}
         />
         <MyPostsContainer />
       </div>

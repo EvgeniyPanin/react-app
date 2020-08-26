@@ -15,6 +15,7 @@ class ProfileContainer extends React.Component {
       return <Profile user={ this.props.user }
                       status={ this.props.status }
                       setUserStatus={ this.props.setUserStatus }
+                      myID={this.props.myID}
                       />
     }
     
