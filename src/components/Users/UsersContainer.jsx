@@ -53,7 +53,7 @@ class UsersContainer extends React.Component {
   };
 
   createPagesList = () => {
-    const length = this.props.totalUsersCount / this.props.pageSize;
+    const length = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
     const pagesList = [];
     for (let i = 1; i <= length; i++) {
       pagesList.push(i);

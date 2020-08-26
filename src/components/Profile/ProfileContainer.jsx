@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import {acceptProfile} from '../../redux/profile-reducer';
+import {acceptProfile, getStatus, setUserStatus} from '../../redux/profile-reducer';
 import Preloader from "../UI/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
 import withAutoRedirect from "../../hok/withAutoRedirect";
@@ -12,24 +12,29 @@ import { compose } from "redux";
 class ProfileContainer extends React.Component {
     render = () => {
       if (!this.props.user) return <Preloader />
-      return <Profile user={this.props.user}/>
+      return <Profile user={ this.props.user }
+                      status={ this.props.status }
+                      setUserStatus={ this.props.setUserStatus }
+                      />
     }
     
     componentDidMount() {
-      const path = this.props.match.params.id || this.props.myID;
-      this.props.acceptProfile(path);
+      const userID = this.props.match.params.id || this.props.myID;
+      this.props.acceptProfile(userID);
+      this.props.getStatus(userID);
     }
 }
 
 const mapStateToProps = (state) => {
   return {
     user: state.profilePage.profile,
-    myID: state.auth.id
+    myID: state.auth.id,
+    status: state.profilePage.status
   }
 }
 
 export default compose(
-  connect(mapStateToProps, { acceptProfile }),
+  connect(mapStateToProps, { acceptProfile, getStatus, setUserStatus }),
   withAutoRedirect,
   withRouter
 )(ProfileContainer)

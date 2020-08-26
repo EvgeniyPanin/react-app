@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./UserProfile.module.css";
 import defaultAvatar from '../../../assets/images/user.png'
-import ProfileStatus from './UserStatus';
+import UserStatus from './UserStatus/UserStatus';
 
 const UserProfile = (props) => {
   const avatar = props.user.photos.large ? props.user.photos.large : defaultAvatar;
@@ -12,7 +12,8 @@ const UserProfile = (props) => {
       </span>
       <div className={style.description_container}>
         <h3>{props.user.fullName}</h3>
-        <ProfileStatus aboutMe={ props.user.aboutMe }/>
+        <p>{ props.user.aboutMe }</p>
+        <UserStatus status={props.status} setUserStatus={props.setUserStatus}/>
       </div>
     </div>
   );
