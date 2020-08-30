@@ -1,37 +1,20 @@
 import React from "react";
 import style from "./NewPost.module.css";
-import Button from "./Button/Button";
+import NewPostForm from "../../../Forms/NewPostForm/NewPostForm";
 
-
-const NewPost = (props) => {
-
-    const hundlerSubmit = (evt) => {
-        evt.preventDefault();
-        props.addPost();
-    }
-
-    const handlerChangeText = (evt) => {
-        const text = evt.target.value;
-        props.changePostText(text);
-    }
-
+class NewPost extends React.Component {
+  render() {
     return (
-        <div className={style.new_post}>
-            <h2 className={style.header}>Мои посты</h2>
-            <form className={style.form} name='new_post_form'>
-                <textarea 
-                        onChange={ handlerChangeText }
-                        className={style.input} 
-                        value={ props.newPostText } 
-                        type='text' 
-                        placeholder='Что у вас нового?'></textarea>
-                <Button hundlerSubmit={ hundlerSubmit } 
-                        contant='Опубликовать'/>
-            </form>
-        </div>
-    )
-        
+      <div className={style.new_post}>
+        <h2 className={style.header}>Мои посты</h2>
+        <NewPostForm onSubmit={this.onSubmit} />
+      </div>
+    );
+  }
 
+  onSubmit = (formData) => {
+    this.props.addPost(formData.NewPostText);
+  };
 }
 
 export default NewPost;
