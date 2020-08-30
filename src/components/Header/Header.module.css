@@ -23,7 +23,11 @@
 }
 
 .login {
-    color: inherit;
+    color: white;
+}
+
+.login:hover {
+    color: white;
     text-decoration: none;
 }
 

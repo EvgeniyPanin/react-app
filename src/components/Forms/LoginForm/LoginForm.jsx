@@ -4,11 +4,18 @@ import { Field, reduxForm } from 'redux-form'
 
 const LoginForm = (props) => {
     return (
-      <form onSubmit={props.handleSubmit}>
-          <Field placeholder='Login' name='login' component='input' type='text'/>
-          <Field placeholder='Password' name='password' component='input' type='text'/>
-          <Field name='rememberMe' component='input' type='checkbox'/>
-          <button type='submit'>Логин</button>
+      <form className={style.login_form} onSubmit={props.handleSubmit}>
+        <div className="form-group">
+          <Field type="text" className="form-control" placeholder='Login' name='login' component='input'/>
+        </div>
+        <div className="form-group">
+          <Field className="form-control" placeholder='Password' name='password' component='input' type='text'/>
+        </div>
+        <div className="form-group form-check">
+          <Field type="checkbox" className="form-check-input" name='rememberMe' component='input'/>
+          <label className="form-check-label" for="exampleCheck1">Запомнить меня</label>
+        </div>
+        <button type="submit" className={`btn btn-primary ${style.button_login}`}>Войти</button>
       </form>
     );
 }
