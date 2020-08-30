@@ -38,7 +38,7 @@
     border: none;
     outline: none;
     border-radius: .5em;
-    width: 15%;
+    width: 120px;
     height: 2.2em;
     cursor: pointer;
     background-color: #6183aa;
@@ -75,4 +75,12 @@
     min-width: 15%;
     max-width: 30%;
     text-align: end;
+}
+
+@media screen and (max-width: 830px) {
+    .button {
+        width: 90px;
+        height: 1.9em;
+        font-size: 14px;
+    }
 }
