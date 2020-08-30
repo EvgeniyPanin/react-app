@@ -2,11 +2,9 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
-import { Redirect } from "react-router-dom";
+import NewMessageForm from "../Forms/NewMessageForm/NewMessageForm";
 
 const Dialogs = (props) => {
-
-  if (!props.isAuth) return <Redirect to='/login' />
 
   const dialogElements = props.dialogs
     .map( dialog => < Dialog name={ dialog.name } id={ dialog.id }/>);
@@ -14,14 +12,9 @@ const Dialogs = (props) => {
   const messageElements = props.messages
     .map( m =>  <Message message={m.message} />);
 
-  function handlerChangeText(evt) {
-    const text = evt.target.value;
-    props.changeText(text);
-  }
 
-  const handlerSubmit = (evt) => {
-    evt.preventDefault();
-    props.addMessage();
+  const onSubmit = (formData) => {
+    props.addMessage(formData.newMessage);
   }
 
     return (
@@ -29,15 +22,7 @@ const Dialogs = (props) => {
         <ul className={style.dialogs_container}>{ dialogElements }</ul>
         <section>{ messageElements }</section>
         <section className={style.new_message}>
-          <form className={style.form}>
-            <textarea
-              onChange={ handlerChangeText }
-              value={ props.newMessageText }
-              name="new-message"
-              id="new-message"
-            ></textarea>
-            <button onClick={ handlerSubmit }>Отправить</button>
-          </form>
+          <NewMessageForm onSubmit={onSubmit}/>
         </section>
       </div>
     );

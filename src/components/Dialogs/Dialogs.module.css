@@ -18,12 +18,3 @@
     width: 100%;
     height: 100%;
 }
-
-.form {
-    display: flex;
-    flex-direction: column;
-}
-
-.buttont {
-    width: 100%;
-}
