@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Field.module.css';
 
 export const Input = ({input, meta, ...props}) => {
-    const hasError = meta.touched && meta.error && !meta.active
+    const hasError = (!meta.pristine || meta.touched) && meta.error;
     console.log(meta)
     return (
         <div className={style.field_container}>

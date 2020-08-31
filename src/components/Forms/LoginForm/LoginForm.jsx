@@ -3,8 +3,11 @@ import style from './LoginForm.module.css';
 import { Field, reduxForm } from 'redux-form'
 import { Input } from '../Fields/Field';
 import { required } from '../../../utils/validators/required';
+import { maxLengthCreator } from '../../../utils/validators/maxLengthCreator';
 
+const maxLength15 = maxLengthCreator(15);
 const LoginForm = (props) => {
+
     return (
       <form className={style.login_form} onSubmit={props.handleSubmit}>
         <div className="form-group">
@@ -13,7 +16,7 @@ const LoginForm = (props) => {
                 placeholder='Login' 
                 name='login' 
                 component={Input}
-                validate={[required]}
+                validate={[required, maxLength15]}
           />
         </div>
         <div className="form-group">

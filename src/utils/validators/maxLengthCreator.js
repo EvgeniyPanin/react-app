@@ -1,6 +1,6 @@
 export const maxLengthCreator = (max) => (value) => {
-    if (value.length < 15) {
-        return 'Не более 15 символов'
+    if (value.length > max) {
+        return 'Не более 15 символов';
     }
     return undefined;
 }
