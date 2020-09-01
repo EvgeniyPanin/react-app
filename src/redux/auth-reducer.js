@@ -47,4 +47,14 @@ export const login = (email, password, rememberMe = false) => {
   };
 };
 
+export const logout = () => {
+  return (dispatch) => {
+    authAPI.logout().then(data => {
+      if (data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false));
+      }
+    });
+  };
+};
+
 export default authReducer;
