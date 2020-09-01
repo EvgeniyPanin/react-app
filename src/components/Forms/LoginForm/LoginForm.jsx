@@ -13,19 +13,19 @@ const LoginForm = (props) => {
         <div className="form-group">
           <Field type="text" 
                 className="form-control" 
-                placeholder='Login' 
-                name='login' 
+                placeholder='email' 
+                name='email' 
                 component={Input}
                 validate={[required, maxLength25]}
           />
         </div>
         <div className="form-group">
           <Field className="form-control" 
-                placeholder='Password' 
+                placeholder='password' 
                 name='password' 
                 component={Input}
                 validate={[required, maxLength25]}
-                type='text'
+                type='password'
           />
         </div>
         <div className="form-group form-check">
