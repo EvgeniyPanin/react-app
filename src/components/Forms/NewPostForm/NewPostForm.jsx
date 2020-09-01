@@ -1,6 +1,7 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import style from "./NewPostForm.module.css";
+import { required } from "../../../utils/validators/required";
 
 const NewPostForm = (props) => {
   return (
@@ -11,7 +12,8 @@ const NewPostForm = (props) => {
         placeholder="Что у вас нового?"
         component="input"
         name="NewPostText"
-      ></Field>
+        validate={[required]}
+      />
         <button type="submit" className={`btn btn-primary ${style.button}`}>Отправить</button>
     </form>
   );

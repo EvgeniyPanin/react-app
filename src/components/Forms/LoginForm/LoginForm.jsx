@@ -5,7 +5,7 @@ import { Input } from '../Fields/Field';
 import { required } from '../../../utils/validators/required';
 import { maxLengthCreator } from '../../../utils/validators/maxLengthCreator';
 
-const maxLength15 = maxLengthCreator(15);
+const maxLength25 = maxLengthCreator(25);
 const LoginForm = (props) => {
 
     return (
@@ -16,7 +16,7 @@ const LoginForm = (props) => {
                 placeholder='Login' 
                 name='login' 
                 component={Input}
-                validate={[required, maxLength15]}
+                validate={[required, maxLength25]}
           />
         </div>
         <div className="form-group">
@@ -24,7 +24,7 @@ const LoginForm = (props) => {
                 placeholder='Password' 
                 name='password' 
                 component={Input}
-                validate={[required]}
+                validate={[required, maxLength25]}
                 type='text'
           />
         </div>
