@@ -13,3 +13,11 @@
     opacity: .85;
     translate: .3s;
 }
+
+.submit_error {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: rgb(252, 89, 89);
+    margin-bottom: 10px;
+}

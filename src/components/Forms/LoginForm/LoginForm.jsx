@@ -7,9 +7,9 @@ import { maxLengthCreator } from '../../../utils/validators/maxLengthCreator';
 
 const maxLength25 = maxLengthCreator(25);
 const LoginForm = (props) => {
-
     return (
       <form className={style.login_form} onSubmit={props.handleSubmit}>
+        <span className={style.submit_error}>{ props.error }</span>
         <div className="form-group">
           <Field type="text" 
                 className="form-control" 
