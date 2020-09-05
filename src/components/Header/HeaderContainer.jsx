@@ -8,9 +8,8 @@ class HeaderContainer extends React.Component {
   render() {
     return <Header { ...this.props }/>;
   }
-  componentDidMount() {
-    this.props.getMe();
-  }
+  
+  componentDidMount() {}
 }
 
 const mapStateToProps = (state) => {
