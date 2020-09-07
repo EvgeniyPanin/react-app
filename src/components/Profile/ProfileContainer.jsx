@@ -6,6 +6,8 @@ import Preloader from "../UI/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
 import withAutoRedirect from "../../hok/withAutoRedirect";
 import { compose } from "redux";
+import { selectUser, selectStatus } from "../../redux/profile-selectors";
+import { selectId } from "../../redux/auth-selectors";
 
 
 
@@ -28,9 +30,9 @@ class ProfileContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.profilePage.profile,
-    myID: state.auth.id,
-    status: state.profilePage.status
+    user: selectUser(state),
+    myID: selectId(state),
+    status: selectStatus(state)
   }
 }
 
