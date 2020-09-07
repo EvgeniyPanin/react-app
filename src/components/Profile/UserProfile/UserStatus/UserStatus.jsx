@@ -1,59 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import style from './UserStatus.module.css';
 
-class UserStatus extends React.Component {
-  state = {
-    editMode: false,
-    status: this.props.status
+const UserStatus = (props) => {
+  const [editMode, setEditMode] = useState(false);
+  const [status, setStatus] = useState(props.status);
+
+  const handlerOnEdit = () => {
+    setEditMode(true)
   };
 
-  render() {
-    return (
-      <div>
-        {this.state.editMode ? (
-          <input
-            className={style.input}
-            onChange={this.handlerOnChange}
-            autoFocus={true}
-            onBlur={this.handlerOffEdit}
-            value={this.state.status}
-            type="text"
-          />
-        ) : (
-          <p onClick={this.handlerOnEdit}>
-            {this.state.status}
-          </p>
-        )}
-      </div>
-    );
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.status !== this.props.status) {
-      this.setState({
-        status: this.props.status
-      });
-    }
-  }
-
-  handlerOnChange = (evt) => {
-    this.setState({
-      status: evt.target.value
-    });
+  const handlerOffEdit = () => {
+    props.setUserStatus(status)
+    setEditMode(false)
   };
 
-  handlerOnEdit = () => {
-    this.setState({
-      editMode: true,
-    });
+  const handlerOnChange = (evt) => {
+    setStatus(evt.target.value)
   };
-
-  handlerOffEdit = () => {
-    this.props.setUserStatus(this.state.status)
-    this.setState({
-      editMode: false,
-    });
-  };
+  return (
+    <div>
+      {editMode ? (
+        <input
+          className={style.input}
+          onChange={handlerOnChange}
+          autoFocus={true}
+          onBlur={handlerOffEdit}
+          value={status}
+          type="text"
+        />
+      ) : (
+        <p onClick={handlerOnEdit}>
+          {status}
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default UserStatus;
