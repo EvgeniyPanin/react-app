@@ -1,4 +1,4 @@
-const ADD_MESSAGE = "ADD-MESSAGE";
+const ADD_MESSAGE = "DIALOG/ADD-MESSAGE";
 
 const createNewMessage = (messages, text) => {
   const newMessage = {

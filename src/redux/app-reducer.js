@@ -1,7 +1,6 @@
-import { authAPI } from "../api/api";
 import { getMe } from "./auth-reducer";
 
-const SET_INITIALIZE = "SET_INITIALIZE";
+const SET_INITIALIZE = "APP/SET_INITIALIZE";
 
 const initialState = {
   initialized: false,

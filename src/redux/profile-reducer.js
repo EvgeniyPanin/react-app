@@ -1,8 +1,8 @@
 import { profileAPI } from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_PROFILE = 'SET_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'PROFILE/ADD-POST';
+const SET_PROFILE = 'PROFILE/SET_PROFILE';
+const SET_STATUS = 'PROFILE/SET_STATUS';
 
 const createNewPost = (text) => {
     const newPost = {

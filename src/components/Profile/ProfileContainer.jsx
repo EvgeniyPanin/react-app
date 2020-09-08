@@ -7,15 +7,18 @@ import {
   setUserStatus,
 } from "../../redux/profile-reducer";
 import Preloader from "../UI/Preloader/Preloader";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import withAutoRedirect from "../../hok/withAutoRedirect";
 import { compose } from "redux";
 import { selectUser, selectStatus } from "../../redux/profile-selectors";
 import { selectId } from "../../redux/auth-selectors";
 
-class ProfileContainer extends React.Component {
+
+class ProfileContainer extends React.PureComponent {
   render = () => {
-    if (!this.props.user) return <Preloader />;
+    if (!this.props.user) {
+      return <Preloader />
+    } else {
     return (
       <Profile
         user={this.props.user}
@@ -23,7 +26,7 @@ class ProfileContainer extends React.Component {
         setUserStatus={this.props.setUserStatus}
         myID={this.props.myID}
       />
-    );
+    )}
   };
 
   componentDidMount() {
