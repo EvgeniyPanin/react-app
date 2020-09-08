@@ -1,0 +1,32 @@
+.nav {
+    width: 97%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    display: block;
+    width: 1.5em;
+    height: 1.3em;
+    text-align: center;
+    background-color: #ebedf0;
+    cursor: pointer;
+    font-size: .8em;
+}
+
+.item:hover {
+    border: 1px solid grey;
+}
+
+.item_active {
+    background-color: #858686;
+    display: block;
+    text-align: center;
+    width: 1.5em;
+    height: 1.3em;
+    color: white;
+    font-size: .8em;
+    opacity: .7;
+    cursor: pointer;
+}

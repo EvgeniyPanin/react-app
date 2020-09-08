@@ -85,14 +85,31 @@ export function toggleFollowingFetching(state, userID) {
   return { type: TOGGLE_FOLLOWING_FETCHING, state, userID };
 }
 
-export const getUsers = (currenPage) => {
-  return (dispatch) => {
+export const getUsers = (currentPage) => {
+  return async (dispatch) => {
     dispatch(toggleFetched(true));
-    usersAPI.getUsers(currenPage).then((data) => {
-      dispatch(setTotalCount(data.totalCount));
-      dispatch(toggleFetched(false));
-      dispatch(setUsers(data.items));
-    });
+
+    const data = await usersAPI.getUsers(currentPage);
+
+    dispatch(setTotalCount(data.totalCount));
+    dispatch(toggleFetched(false));
+    dispatch(setUsers(data.items));
+  };
+};
+
+export const toggleSubscribe = (userID, state) => {
+  const apiRequest = state ? 'postFollow' : 'deleteFollow';
+
+  return async (dispatch) => {
+    dispatch(toggleFollowingFetching(true, userID));
+
+    const data = await followAPI[apiRequest](userID);
+
+    const isResOK = data.resultCode == 0;
+    if (isResOK) {
+      dispatch(toggleFallow(userID));
+    }
+    dispatch(toggleFollowingFetching(false, userID));
   };
 };
 

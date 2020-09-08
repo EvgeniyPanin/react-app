@@ -4,11 +4,8 @@ import { connect } from "react-redux";
 import {
   updateCurrentPage,
   getUsers,
-  follow,
-  unfollow,
+  toggleSubscribe,
 } from "../../redux/users-reducer";
-import User from "./User/User";
-import style from "./Users.module.css";
 import Preloader from "../UI/Preloader/Preloader";
 import { compose } from "redux";
 import {
@@ -17,22 +14,41 @@ import {
   selectTotalUsersCount,
   selectPageSize,
   selectIsFollowingFetching,
-  selectIsFetching
+  selectIsFetching,
 } from "../../redux/users-selectors";
+import Paginator from "../UI/Paginator/Paginator";
 
 class UsersContainer extends React.Component {
   render = () => {
+    const {
+      isFetching,
+      totalUsersCount,
+      pageSize,
+      togglePages,
+      currentPage,
+      users,
+      toggleSubscribe,
+      isFollowingFetching,
+    } = this.props;
+
     return (
       <>
-        {this.props.isFetching ? (
+        {isFetching ? (
           <Preloader />
         ) : (
-          <Users
-            createUsersArr={this.createUsersArr}
-            createPagesList={this.createPagesList}
-            togglePages={this.togglePages}
-            isFetching={this.props.isFetching}
-          />
+          <div>
+            <Paginator
+              totalUsersCount={totalUsersCount}
+              pageSize={pageSize}
+              togglePages={this.togglePages}
+              currentPage={currentPage}
+            />
+            <Users
+              users={users}
+              toggleSubscribe={toggleSubscribe}
+              isFollowingFetching={isFollowingFetching}
+            />
+          </div>
         )}
       </>
     );
@@ -47,36 +63,6 @@ class UsersContainer extends React.Component {
     this.props.updateCurrentPage(newCurrentPage);
     this.props.getUsers(newCurrentPage);
   };
-
-  createUsersArr = () => {
-    return this.props.users.map((user) => {
-      return (
-        <User
-          avatar={user.photos.small}
-          name={user.name}
-          status={user.status}
-          fallowed={user.followed}
-          userID={user.id}
-          isFollowingFetching={this.props.isFollowingFetching}
-          follow={this.props.follow}
-          unfollow={this.props.unfollow}
-        />
-      );
-    });
-  };
-
-  createPagesList = () => {
-    const length = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-    const pagesList = [];
-    for (let i = 1; i <= length; i++) {
-      pagesList.push(i);
-    }
-    return pagesList.map((item) => {
-      const itemClass =
-        item === this.props.currentPage ? style.item_active : style.item;
-      return <span className={itemClass}>{item}</span>;
-    });
-  };
 }
 
 const mapStateToProps = (state) => {
@@ -86,10 +72,10 @@ const mapStateToProps = (state) => {
     totalUsersCount: selectTotalUsersCount(state),
     pageSize: selectPageSize(state),
     isFollowingFetching: selectIsFollowingFetching(state),
-    isFetching: selectIsFetching(state)
+    isFetching: selectIsFetching(state),
   };
 };
 
 export default compose(
-  connect(mapStateToProps, { updateCurrentPage, getUsers, follow, unfollow })
+  connect(mapStateToProps, { updateCurrentPage, getUsers, toggleSubscribe })
 )(UsersContainer);
