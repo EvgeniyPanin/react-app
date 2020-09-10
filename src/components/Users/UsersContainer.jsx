@@ -25,7 +25,6 @@ class UsersContainer extends React.Component {
       isFetching,
       totalUsersCount,
       pageSize,
-      togglePages,
       currentPage,
       users,
       toggleSubscribe,
@@ -38,21 +37,21 @@ class UsersContainer extends React.Component {
         pageSize={pageSize}
         togglePages={this.togglePages}
         currentPage={currentPage}
+        portionLength={10}
       />
     );
     return (
       <>
+       {pagination}
         {isFetching ? (
           <Preloader />
         ) : (
           <div className={style.container}>
-            {pagination}
             <Users
               users={users}
               toggleSubscribe={toggleSubscribe}
               isFollowingFetching={isFollowingFetching}
             />
-            {pagination}
           </div>
         )}
       </>
