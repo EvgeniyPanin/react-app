@@ -1,6 +1,7 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
+import style from './Users.module.css';
 import {
   updateCurrentPage,
   getUsers,
@@ -31,23 +32,27 @@ class UsersContainer extends React.Component {
       isFollowingFetching,
     } = this.props;
 
+    const pagination = (
+      <Paginator
+        totalUsersCount={totalUsersCount}
+        pageSize={pageSize}
+        togglePages={this.togglePages}
+        currentPage={currentPage}
+      />
+    );
     return (
       <>
         {isFetching ? (
           <Preloader />
         ) : (
-          <div>
-            <Paginator
-              totalUsersCount={totalUsersCount}
-              pageSize={pageSize}
-              togglePages={this.togglePages}
-              currentPage={currentPage}
-            />
+          <div className={style.container}>
+            {pagination}
             <Users
               users={users}
               toggleSubscribe={toggleSubscribe}
               isFollowingFetching={isFollowingFetching}
             />
+            {pagination}
           </div>
         )}
       </>
