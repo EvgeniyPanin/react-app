@@ -6,12 +6,14 @@ const UPDATE_CURRENT_PAGE = "USERS/UPDATE_CURRENT_PAGE";
 const TOGGLE_IS_FETCHED = "USERS/TOGGLE_IS_FETCHED";
 const TOGGLE_FOLLOWING_FETCHING = "USERS/TOGGLE_FOLLOWING_FETCHING";
 const SET_TOTAL_COUNT = "USERS/SET_TOTAL_COUNT";
+const SET_PORTION_NUMBER = "USERS/SET_PORTION_NUMBER";
 
 const initialState = {
   users: [],
   pageSize: 10,
   totalUsersCount: null,
   currentPage: 1,
+  portionNumber: 1,
   isFetching: false,
   isFollowingFetching: [],
 };
@@ -39,6 +41,8 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, isFetching: action.state };
     case SET_TOTAL_COUNT:
       return { ...state, totalUsersCount: action.totalCount };
+    case SET_PORTION_NUMBER:
+      return { ...state, portionNumber: action.portionNumber };
     case TOGGLE_FOLLOWING_FETCHING:
       if (action.state) {
         return {
@@ -71,6 +75,10 @@ export function setUsers(users) {
 
 export function setTotalCount(totalCount) {
   return { type: SET_TOTAL_COUNT, totalCount };
+}
+
+export function setPortionNumber(portionNumber) {
+  return { type: SET_PORTION_NUMBER, portionNumber };
 }
 
 export function updateCurrentPage(newCurrentPage) {

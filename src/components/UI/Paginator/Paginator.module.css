@@ -6,6 +6,10 @@ ul.pagination {
     margin: 0;
 }
 
+.pagination:last-of-type {
+    padding-bottom: 20px;
+}
+
 ul.pagination li {
     display: block;
 }

@@ -6,6 +6,10 @@ export const selectCurrentPage = function(state) {
     return state.usersPage.currentPage
 }
 
+export const selectPortionNumber = function(state) {
+    return state.usersPage.portionNumber
+}
+
 export const selectTotalUsersCount = function(state) {
     return state.usersPage.totalUsersCount
 }

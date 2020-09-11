@@ -19,7 +19,7 @@ const appReducer = (state = initialState, action) => {
 };
 
 export const setInitialize = () => {
-  return { type: SET_INITIALIZE };
+  return { type: SET_INITIALIZE }
 };
 
 export const initialization = () => {

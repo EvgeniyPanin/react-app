@@ -1,9 +1,10 @@
 import React from "react";
 import Users from "./Users";
 import { connect } from "react-redux";
-import style from './Users.module.css';
+import style from "./Users.module.css";
 import {
   updateCurrentPage,
+  setPortionNumber,
   getUsers,
   toggleSubscribe,
 } from "../../redux/users-reducer";
@@ -12,6 +13,7 @@ import { compose } from "redux";
 import {
   selectUsers,
   selectCurrentPage,
+  selectPortionNumber,
   selectTotalUsersCount,
   selectPageSize,
   selectIsFollowingFetching,
@@ -29,6 +31,8 @@ class UsersContainer extends React.Component {
       users,
       toggleSubscribe,
       isFollowingFetching,
+      portionNumber,
+      setPortionNumber,
     } = this.props;
 
     const pagination = (
@@ -37,16 +41,18 @@ class UsersContainer extends React.Component {
         pageSize={pageSize}
         togglePages={this.togglePages}
         currentPage={currentPage}
+        portionNumber={portionNumber}
         portionLength={10}
+        setPortionNumber={setPortionNumber}
       />
     );
     return (
       <>
-       {pagination}
+        {pagination}
         {isFetching ? (
           <Preloader />
         ) : (
-          <div className={style.container}>
+          <div>
             <Users
               users={users}
               toggleSubscribe={toggleSubscribe}
@@ -73,6 +79,7 @@ const mapStateToProps = (state) => {
   return {
     users: selectUsers(state),
     currentPage: selectCurrentPage(state),
+    portionNumber: selectPortionNumber(state),
     totalUsersCount: selectTotalUsersCount(state),
     pageSize: selectPageSize(state),
     isFollowingFetching: selectIsFollowingFetching(state),
@@ -81,5 +88,10 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { updateCurrentPage, getUsers, toggleSubscribe })
+  connect(mapStateToProps, {
+    updateCurrentPage,
+    setPortionNumber,
+    getUsers,
+    toggleSubscribe,
+  })
 )(UsersContainer);
