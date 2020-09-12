@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Users.module.css";
 import User from "./User/User";
 
-const Users = ({ users, toggleSubscribe, isFollowingFetching }) => {
+const Users = ({ users, toggleSubscribe, isFollowingFetching, isAuth }) => {
   return (
     <div>
       {users.map((user) => {
@@ -15,6 +15,7 @@ const Users = ({ users, toggleSubscribe, isFollowingFetching }) => {
             fallowed={user.followed}
             userID={user.id}
             isFollowingFetching={isFollowingFetching}
+            isAuth={isAuth}
           />
         );
       })}

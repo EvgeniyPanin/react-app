@@ -16,7 +16,7 @@ const User = (props) => {
         <h2 className={style.name}>{props.name}</h2>
         <p className={style.status}>{props.status}</p>
       </div>
-      <button
+      {props.isAuth && <button
         disabled={ props.isFollowingFetching.some(id => id === props.userID) }
         onClick={() => {props.toggleSubscribe(props.userID, !props.fallowed)}}
         className={props.isFollowingFetching.some(id => id === props.userID)
@@ -24,7 +24,7 @@ const User = (props) => {
           : style.button }
       >
         {props.fallowed ? "Отписаться" : "Подписаться"}
-      </button>
+      </button>}
     </div>
   );
 };

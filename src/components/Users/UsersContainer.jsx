@@ -20,6 +20,7 @@ import {
   selectIsFetching,
 } from "../../redux/users-selectors";
 import Paginator from "../UI/Paginator/Paginator";
+import { selectIsAuth } from "../../redux/auth-selectors";
 
 class UsersContainer extends React.Component {
   render = () => {
@@ -33,6 +34,7 @@ class UsersContainer extends React.Component {
       isFollowingFetching,
       portionNumber,
       setPortionNumber,
+      isAuth
     } = this.props;
 
     const pagination = (
@@ -57,6 +59,7 @@ class UsersContainer extends React.Component {
               users={users}
               toggleSubscribe={toggleSubscribe}
               isFollowingFetching={isFollowingFetching}
+              isAuth={isAuth}
             />
           </div>
         )}
@@ -84,6 +87,7 @@ const mapStateToProps = (state) => {
     pageSize: selectPageSize(state),
     isFollowingFetching: selectIsFollowingFetching(state),
     isFetching: selectIsFetching(state),
+    isAuth: selectIsAuth(state)
   };
 };
 
