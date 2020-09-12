@@ -33,7 +33,7 @@ const UserStatus = (props) => {
           type="text"
         />
       ) : (
-        <p onClick={handlerOnEdit}>
+        <p className={style.status} onClick={handlerOnEdit}>
           {status}
         </p>
       )}

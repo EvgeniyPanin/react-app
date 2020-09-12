@@ -11,10 +11,10 @@ const UserProfile = (props) => {
         <img className={style.avatar} src={ avatar } />
       </span>
       <div className={style.description_container}>
-        <h3>{props.user.fullName}</h3>
+        <h3 className={style.user_name}>{props.user.fullName}</h3>
         {props.user.userId === props.myID
           ? <UserStatus status={props.status} setUserStatus={props.setUserStatus}/>
-          : <p>{ props.user.aboutMe }</p>}
+          : <p className={style.status}>{ props.user.aboutMe }</p>}
       </div>
     </div>
   );

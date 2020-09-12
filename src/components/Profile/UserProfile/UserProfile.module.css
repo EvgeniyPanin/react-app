@@ -11,6 +11,7 @@
    padding-bottom: 15%;
    margin-left: 1em;
    position: relative;
+   height: fit-content;
 }
 
 .avatar {
@@ -23,7 +24,18 @@
 }
 
 .description_container {
-    /* flex: none; */
     width: 85%;
     margin-left: 1.5em;
+}
+
+@media screen and (max-width: 868px) {
+    .user_name {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .user_name {
+        font-size: 17px;
+    }
 }
