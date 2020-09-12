@@ -1,4 +1,23 @@
 .form {
     display: flex;
     flex-direction: column;
+    border: 1px solid #6183aa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.input {
+    height: 7vh;
+}
+
+.button {
+    background-color: #6183aa;
+    border: none;
+    margin-top: 15px;
+}
+
+.button:hover {
+    background-color: #6183aa;
+    opacity: .85;
+    translate: .3s;
 }
