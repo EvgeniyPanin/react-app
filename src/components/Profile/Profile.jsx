@@ -9,7 +9,7 @@ const Profile = ({user, status, setUserStatus, myID, loadAvatarHandle}) => {
   const isMe = user.userId === myID;
     return (
       <div className={style.profile}>
-        <Illustration />
+        {isMe && <Illustration />}
         <UserProfile
           user={user}
           status={status}
