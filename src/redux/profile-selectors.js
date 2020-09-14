@@ -9,3 +9,7 @@ export const selectStatus = function(state) {
 export const selectPosts = function(state) {
     return state.profilePage.posts
 };
+
+export const selectAvatar = function(state) {
+    return state.profilePage.profile.photos.small
+};

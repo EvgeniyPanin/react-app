@@ -5,18 +5,19 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import UserProfile from "./UserProfile/UserProfile";
 
 
-const Profile = (props) => {
+const Profile = ({user, status, setUserStatus, myID, loadAvatarHandle}) => {
+  const isMe = user.userId === myID;
     return (
       <div className={style.profile}>
         <Illustration />
         <UserProfile
-          user={props.user}
-          status={props.status}
-          setUserStatus={props.setUserStatus}
-          myID={props.myID}
-          loadAvatarHandle={props.loadAvatarHandle}
+          user={user}
+          status={status}
+          setUserStatus={setUserStatus}
+          myID={myID}
+          loadAvatarHandle={loadAvatarHandle}
         />
-        <MyPostsContainer />
+        {isMe && <MyPostsContainer />}
       </div>
     );
 }

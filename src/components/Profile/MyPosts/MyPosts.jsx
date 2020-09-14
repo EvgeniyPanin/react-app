@@ -6,7 +6,7 @@ import Post from "./Post/Post";
 
 const MyPosts = (props) => {
     const postsElements = props.posts
-        .map(post => <Post contant={ post.contant }  avatar={ post.avatar }/>);
+        .map(post => <Post contant={ post.contant }  avatar={ props.userAvatar }/>);
     return (
         <div>
             <NewPost
