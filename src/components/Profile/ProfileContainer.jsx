@@ -5,6 +5,7 @@ import {
   acceptProfile,
   getStatus,
   setUserStatus,
+  setUserAvatar
 } from "../../redux/profile-reducer";
 import Preloader from "../UI/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
@@ -25,6 +26,7 @@ class ProfileContainer extends React.PureComponent {
         status={this.props.status}
         setUserStatus={this.props.setUserStatus}
         myID={this.props.myID}
+        loadAvatarHandle={this.loadAvatarHandle}
       />
     )}
   };
@@ -38,11 +40,18 @@ class ProfileContainer extends React.PureComponent {
       this.updateProfileSuccess();
     }
   }
+
   updateProfileSuccess() {
     const userID = this.props.match.params.id || this.props.myID;
     this.props.acceptProfile(userID);
     this.props.getStatus(userID);
   }
+
+  loadAvatarHandle = (evt) => {
+    console.log(evt.target.files[0])
+    this.props.setUserAvatar(evt.target.files[0])
+  }
+
 }
 
 const mapStateToProps = (state) => {
@@ -54,7 +63,7 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { acceptProfile, getStatus, setUserStatus }),
+  connect(mapStateToProps, { acceptProfile, getStatus, setUserStatus, setUserAvatar }),
   withAutoRedirect,
   withRouter
 )(ProfileContainer);

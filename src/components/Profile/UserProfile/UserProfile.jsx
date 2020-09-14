@@ -13,7 +13,7 @@ const UserProfile = (props) => {
         <span className={style.image_container}>
           <img className={style.avatar} src={ avatar } />
         </span>
-        {isMyProfile && <UploadFile />}
+        {isMyProfile && <UploadFile fileLoader={props.loadAvatarHandle} />}
       </div>
       <div className={style.description_container}>
         <h3 className={style.user_name}>{props.user.fullName}</h3>

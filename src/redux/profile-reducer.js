@@ -3,6 +3,7 @@ import { profileAPI } from "../api/api";
 const ADD_POST = "PROFILE/ADD-POST";
 const SET_PROFILE = "PROFILE/SET_PROFILE";
 const SET_STATUS = "PROFILE/SET_STATUS";
+const SET_USER_AVATAR_SUCCESS = "PROFILE/SET_USER_AVATAR_SUCCESS";
 
 const createNewPost = (text) => {
   const newPost = {
@@ -53,6 +54,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status,
       };
+    case SET_USER_AVATAR_SUCCESS:
+      return {
+        ...state,
+        profile: {...state.profile, photos: action.photos},
+      };
     default:
       return state;
   }
@@ -68,6 +74,10 @@ export function setProfile(profile) {
 
 export function setStatus(status) {
   return { type: SET_STATUS, status };
+}
+
+export function setUserAvatarSuccess(photos) {
+  return { type: SET_USER_AVATAR_SUCCESS, photos };
 }
 
 export const acceptProfile = (path) => {
@@ -100,6 +110,19 @@ export const setUserStatus = (status) => {
     const isHasStatus = (res.resultCode === 0);
     if (isHasStatus) {
       dispatch(setStatus(status));
+    }
+  };
+};
+
+export const setUserAvatar = (fileAvatar) => {
+  return async (dispatch) => {
+
+    const res = await profileAPI.setAvatar(fileAvatar);
+    const isOk = (res.resultCode === 0);
+    if (isOk) {
+      dispatch(setUserAvatarSuccess(res.data.photos));
+    } else {
+      alert(`Произошла ошибка при обновлении аватара`)
     }
   };
 };

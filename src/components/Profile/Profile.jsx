@@ -14,6 +14,7 @@ const Profile = (props) => {
           status={props.status}
           setUserStatus={props.setUserStatus}
           myID={props.myID}
+          loadAvatarHandle={props.loadAvatarHandle}
         />
         <MyPostsContainer />
       </div>
