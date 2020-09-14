@@ -1,0 +1,42 @@
+.btn_tertiary {
+    color:#555;
+    padding:0;
+    line-height:30px;
+    width:100%;
+    margin:auto;
+    display:block;
+    border:2px solid rgb(4, 4, 100);
+}
+
+.btn_tertiary:hover, .btn_tertiary:focus {
+    color:rgb(6, 6, 194);
+    border-color:rgb(6, 6, 194);
+}
+
+.input_file {
+    width:.1px;
+    height:.1px;
+    opacity:0;
+    overflow:hidden;
+    position:absolute;
+    z-index:-1;
+}
+
+.input_file + .js_labelFile {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    padding:0 5px;
+    cursor:pointer;
+}
+
+.input_file + .js_labelFile .icon:before {
+    content:"\21ea";
+    padding-right: 4px;
+}
+
+.input_file + .js_labelFile.has_file .icon:before {
+    content:"\2713";
+    padding-right: 4px;
+    color:#30c26b;
+}

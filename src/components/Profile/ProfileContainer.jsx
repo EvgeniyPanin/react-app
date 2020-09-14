@@ -30,6 +30,15 @@ class ProfileContainer extends React.PureComponent {
   };
 
   componentDidMount() {
+    this.updateProfileSuccess();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.id != prevProps.match.params.id) {
+      this.updateProfileSuccess();
+    }
+  }
+  updateProfileSuccess() {
     const userID = this.props.match.params.id || this.props.myID;
     this.props.acceptProfile(userID);
     this.props.getStatus(userID);

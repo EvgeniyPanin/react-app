@@ -6,12 +6,16 @@
 }
 
 .avatar_container {
-    display: inline-block;
-   width: 15%;
-   padding-bottom: 15%;
    margin-left: 1em;
-   position: relative;
+   width: 25%;
    height: fit-content;
+}
+
+.image_container {
+    display: inline-block;
+   width: 100%;
+   padding-bottom: 100%;
+   position: relative;
 }
 
 .avatar {
