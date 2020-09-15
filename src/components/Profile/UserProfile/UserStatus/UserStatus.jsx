@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import style from './UserStatus.module.css';
+import pencil from '../../../../assets/images/pencil.png'
 
 const UserStatus = (props) => {
   const [editMode, setEditMode] = useState(false);
@@ -33,8 +34,9 @@ const UserStatus = (props) => {
           type="text"
         />
       ) : (
-        <p className={style.status} onClick={handlerOnEdit}>
+        <p className={style.status}>
           {status}
+          <img  onClick={handlerOnEdit} className={style.pencil} src={pencil} alt="edit"/>
         </p>
       )}
     </div>

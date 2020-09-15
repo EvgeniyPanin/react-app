@@ -22,10 +22,10 @@ class ProfileContainer extends React.PureComponent {
     } else {
     return (
       <Profile
+        isOwner={this.props.myID === this.props.user.userId}
         user={this.props.user}
         status={this.props.status}
         setUserStatus={this.props.setUserStatus}
-        myID={this.props.myID}
         loadAvatarHandle={this.loadAvatarHandle}
       />
     )}

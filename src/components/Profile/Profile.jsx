@@ -5,19 +5,18 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import UserProfile from "./UserProfile/UserProfile";
 
 
-const Profile = ({user, status, setUserStatus, myID, loadAvatarHandle}) => {
-  const isMe = user.userId === myID;
+const Profile = ({user, status, setUserStatus, myID, loadAvatarHandle, isOwner}) => {
     return (
       <div className={style.profile}>
-        {isMe && <Illustration />}
+        {isOwner && <Illustration />}
         <UserProfile
+          isOwner={isOwner}
           user={user}
           status={status}
           setUserStatus={setUserStatus}
-          myID={myID}
           loadAvatarHandle={loadAvatarHandle}
         />
-        {isMe && <MyPostsContainer />}
+        {isOwner && <MyPostsContainer />}
       </div>
     );
 }
