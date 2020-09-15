@@ -14,7 +14,7 @@ const NewPostForm = (props) => {
         name="NewPostText"
         validate={[required]}
       />
-        <button type="submit" className={`btn btn-primary ${style.button}`}>Отправить</button>
+        <button type="submit" className={`btn btn-primary ${style.button}`}>Добавить</button>
     </form>
   );
 };

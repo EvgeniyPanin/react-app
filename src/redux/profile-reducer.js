@@ -8,8 +8,7 @@ const SET_USER_AVATAR_SUCCESS = "PROFILE/SET_USER_AVATAR_SUCCESS";
 const createNewPost = (text) => {
   const newPost = {
     contant: text,
-    avatar:
-      "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+    avatar: null,
   };
   return newPost;
 };
@@ -17,19 +16,16 @@ const createNewPost = (text) => {
 const initialState = {
   posts: [
     {
-      contant: "Hello? How are you?",
-      avatar:
-        "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+      contant: "Из за недостаточного функционала сервера, эти посты пока что хардкод",
+      avatar: null,
     },
     {
-      contant: "I use props! It's cool!",
-      avatar:
-        "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+      contant: "Hello? How are you?",
+      avatar: null,
     },
     {
       contant: "Today is June 10th, perfect day to lern the React, Redux",
-      avatar:
-        "https://sun9-2.userapi.com/c853516/v853516347/59171/s_YR0_yc0h0.jpg",
+      avatar: null,
     },
   ],
   profile: null,

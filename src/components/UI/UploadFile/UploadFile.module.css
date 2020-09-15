@@ -1,8 +1,8 @@
 .btn_tertiary {
-    color:#555;
+    color:rgb(4, 4, 100);
     padding:0;
-    line-height:30px;
-    width:100%;
+    line-height:27px;
+    width:80%;
     margin:auto;
     display:block;
     border:2px solid rgb(4, 4, 100);
@@ -39,4 +39,39 @@
     content:"\2713";
     padding-right: 4px;
     color:#30c26b;
+}
+
+.description {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 870px) {
+    .btn_tertiary {
+        width:90%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .btn_tertiary {
+        line-height:23px;
+        width:100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .btn_tertiary {
+        line-height:18px;
+        border:1px solid rgb(4, 4, 100);
+    }
+
+    .description {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .description {
+        font-size: 10px;
+    }
 }
