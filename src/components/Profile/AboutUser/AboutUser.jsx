@@ -20,9 +20,10 @@ const AboutUser = ({ user }) => {
       <b>Мои контакты: </b>
       <ul className={style.contacts}>
         {Object.keys(user.contacts).map((key) => {
+          const link = user.contacts[key];
           return (
-            <li className={style.contacts__item} key={key}>
-              <a className={`${style[key]} ${style.contacts__link}`}></a>
+            link && <li className={style.contacts__item} key={key}>
+              <a className={`${style[key]} ${style.contacts__link}`} target="_blanck" href={link}></a>
             </li>
           );
         })}

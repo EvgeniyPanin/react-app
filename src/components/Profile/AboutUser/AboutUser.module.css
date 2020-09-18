@@ -19,8 +19,12 @@
     padding-bottom: 100%;
     border-radius: 5px;
     overflow: hidden;
-    background-color: rgb(146, 146, 146);
     position: relative;
+}
+
+.contacts__item:hover {
+    transform: scale(1.07);
+    transition: .3s;
 }
 
 .contacts__item:last-of-type {
@@ -29,6 +33,7 @@
 
 .contacts__link {
     display: inline-block;
+    cursor: pointer;
     width: 100%;
     height: 100%;
     background-position: center;
@@ -40,4 +45,28 @@
 
 .instagram {
     background-image: url('../../../assets/images/social-logo/instagram.jpg');
+}
+
+.facebook {
+    background-image: url('../../../assets/images/social-logo/facebook.jpg');
+}
+
+.github {
+    background-image: url('../../../assets/images/social-logo/github.png');
+}
+
+.mainLink, .website {
+    background-image: url('../../../assets/images/social-logo/my_website.png');
+}
+
+.twitter {
+    background-image: url('../../../assets/images/social-logo/twitter.jpg');
+}
+
+.vk {
+    background-image: url('../../../assets/images/social-logo/VK_Logo.png');
+}
+
+.youtube {
+    background-image: url('../../../assets/images/social-logo/youtube.png');
 }
