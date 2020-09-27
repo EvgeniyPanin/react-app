@@ -1,68 +1,61 @@
-Проект находится в разработке, представлен в портфолио только предоставления возможности ознакомления с кодом
+# [Социальная сеть React-разработчиков](https://evgeniypanin.github.io/react-app/#/profile)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+Версия 1.1.0
 
-### `npm start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+В проекте реализован следующий функционал: 
+ - Redirect с любой страницы, кроме страницы отображения пользователей соц.сети, в случае если посетитель сайта не авторизован.
+ - Авторизация реализована с помощью библиотеки Redux-form, выполнена валидация полей, и вывод ошибки авторизации в случае не верно указанных логина и пароля.
+ - На странице профиля можно изменить свой статус и аватар, опубликовать посты.
+ - На странице пользователей реализован постраничный вывод пользователей, можно подписываться и отписываться от пользователей, просматривать их профили. При просмотре профиля отображаются статус пользователя, если пользователь в поиске работы, отображаются его ключевые навыки, если пользователь указал хоть один котакт - отображается блок с контактами.
+ - На странице сообщений с помощью библиотеки Redux-form реализована отправка сообщений, пока не связанная с серверной логикой.
+ - Данные о друзьях пользователя пока зашиты в код проекта, и рендерятся из initialState.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ Стек проекта: React, Redux, SPA, Flux, Axios, thunk, reselect, react-test-renderer, git, HTML, CSS, Bootstrap
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ Планы по доработке проекта: 
+ - Реализовать редактирование своих контактов и состояния поиска работы
+ - Типизировать проект с помощью языка Typescript
+ - Доработать адаптивность проекта под маленькие разрешения экранов
+ - Реализовать поиск по пользователям
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Для того, чтобы клонировать проект себе на компьютер, выполните в командной строке
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+git clone git@github.com:EvgeniyPanin/react-app.git
+```
+Сборка проекта работает на платформе NPM, поэтому для работы вам необходимо установить NodeJS
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
+После скачивания проекта установите все необходимые пакеты командой
+```
+npm -i
+```
+Чтобы собрать версию проекта для разработки, выполните команду
+```
+npm run dev
+```
+При этом запустится локальный сервер и страница с проектом автоматически откроется в браузере,
+если автоматического запуска в браузере не произошло, вы можете самостоятельно открыть его по адресу
 
-### `npm run eject`
+```
+http://localhost:8080/
+```
+Для того чтобы получить локально готовую production версию проекта, необходимо выполнить команду
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+react-scripts build
+```
+После выполнения команды в корневой директории будет создана папка dist, в которую будет помещен собранный проект,
+который можно опубликовать на GitHub с помощью команды
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+gh-pages -d build
+```
+Предварительно необходимо вписать адрес репозитория, куда будет опубликован проект в ключе homepage файла package.json
