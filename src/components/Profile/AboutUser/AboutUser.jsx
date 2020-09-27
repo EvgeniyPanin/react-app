@@ -2,7 +2,8 @@ import React from "react";
 import style from "./AboutUser.module.css";
 
 const AboutUser = ({ user }) => {
-  console.log(user);
+  const isHaveContacts = Object.keys(user.contacts).some((contact) => user.contacts[contact])
+  console.log(isHaveContacts)
   return (
     <div>
       <p className={style.paragraph}>
@@ -17,8 +18,8 @@ const AboutUser = ({ user }) => {
         <b>Ключевые навыки: </b>
         {user.lookingForAJobDescription}
       </p>}
-      <b>Мои контакты: </b>
-      <ul className={style.contacts}>
+      {isHaveContacts && <b>Мои контакты: </b>}
+      {isHaveContacts && <ul className={style.contacts}>
         {Object.keys(user.contacts).map((key) => {
           const link = user.contacts[key];
           return (
@@ -27,7 +28,7 @@ const AboutUser = ({ user }) => {
             </li>
           );
         })}
-      </ul>
+      </ul>}
     </div>
   );
 };
