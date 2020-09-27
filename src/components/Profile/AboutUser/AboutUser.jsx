@@ -13,10 +13,10 @@ const AboutUser = ({ user }) => {
         <b>В поиске работы: </b>
         {user.lookingForAJob ? "✅" : "❌"}
       </p>
-      <p className={style.paragraph}>
+      {user.lookingForAJob && <p className={style.paragraph}>
         <b>Ключевые навыки: </b>
         {user.lookingForAJobDescription}
-      </p>
+      </p>}
       <b>Мои контакты: </b>
       <ul className={style.contacts}>
         {Object.keys(user.contacts).map((key) => {
